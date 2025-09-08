@@ -1,15 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="wrapper">
+    <component :is="layout">
+      <router-view />
+    </component>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import ApplicationLayout from "@/layouts/ApplicationLayout.vue";
+import ControlPanelLayout from "@/layouts/ControlPanelLayout.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    ControlPanelLayout, ApplicationLayout
+  },
+  computed: {
+    layout () {
+      return (this.$route.meta.layout +'Layout')
+    }
   }
 }
 </script>
