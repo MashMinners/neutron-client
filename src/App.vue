@@ -9,6 +9,7 @@
 <script>
 import ApplicationLayout from "@/layouts/ApplicationLayout.vue";
 import ControlPanelLayout from "@/layouts/ControlPanelLayout.vue";
+import 'primeflex/primeflex.css';
 export default {
   components: {
     ControlPanelLayout, ApplicationLayout

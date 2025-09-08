@@ -3,14 +3,14 @@ import axios from "axios";
 
 export const appModule = {
     state:() => ({
-        intersections: [],
-        records: {
-            letterNumber: '123',
-            letterHeader: 'Заголовок'
+        intersections: {
+            bad : [],
+            good: [],
+            dubious : []
         },
         stage: {
-            title: '',
-            message: ''
+            title: 'Титул',
+            message: 'Мессадж'
         }
     }),
     getters: {
@@ -27,7 +27,9 @@ export const appModule = {
     },
     mutations: {
         ['GET_INTERSECTIONS'](state, intersections){
-            state.intersections = intersections
+            state.intersections.bad = intersections.bad
+            state.intersections.good = intersections.good
+            state.intersections.dubious = intersections.dubious
         }
     },
     actions: {
@@ -36,12 +38,8 @@ export const appModule = {
             const params = {}
             // eslint-disable-next-line no-unused-vars
             const response = await axios.get('http://192.168.0.10/stom/intersections', {params});
-            console.log(response.data.bad)
-            commit('GET_INTERSECTIONS', response.data.bad);
-        },
-        // eslint-disable-next-line no-unused-vars
-        getInform({state, commit}, payload){
-            console.log(state.intersections);
+            console.log(response.data)
+            commit('GET_INTERSECTIONS', response.data);
         }
     },
     namespaced: true

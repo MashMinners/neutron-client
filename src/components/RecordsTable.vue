@@ -1,6 +1,6 @@
 <template>
-  <div v-if="getIntersections.length !==0">
-    <prime-data-table editMode="cell" class="editable-cells-table p-datatable-sm"  :value="getIntersections"
+  <div v-if="getIntersections.bad.length !==0">
+    <prime-data-table editMode="cell" class="editable-cells-table p-datatable-sm"  :value="getIntersections.bad"
                       removableSort
                       stripedRows
                       showGridlines
@@ -9,10 +9,11 @@
                       paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
                       :rowsPerPageOptions="[10,20,50]"
                       currentPageReportTemplate="Показано {first} - {last} из {totalRecords}">
-      <prime-column field="stom_register_patient" header="Тема"></prime-column>
-      <prime-column field="employeeSurname" header="Сотрудник"></prime-column>
-      <prime-column field="counterpartyName" header="Контрагент"></prime-column>
-
+      <prime-column field="stom_register_patient" header="Пациент"></prime-column>
+      <prime-column field="visit_date" header="Дата последнего посещения" :sortable="true"></prime-column>
+      <prime-column field="stom_register_treatment_start" header="Дата начала лечения (РЕЕСТР)"></prime-column>
+      <prime-column field="stom_register_treatment_end" header="Дата окончания лечения (РЕЕСТР)"></prime-column>
+      <prime-column field="stom_register_doctor" header="Врач"></prime-column>
     </prime-data-table>
   </div>
   <div v-else>

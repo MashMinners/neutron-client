@@ -2,12 +2,18 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config';
 import PrimeVueModules from "@/configs/prime.vue.modules";
+import Aura from "@primevue/themes/aura";
 import store from "@/store";
 import router from './router'
 
 
 const app = createApp(App)
-app.use(PrimeVue, PrimeVueModules.options[0]);
+//app.use(PrimeVue, PrimeVueModules.options[0]);
+app.use(PrimeVue, {
+    theme: {
+        preset: Aura
+    }
+});
 PrimeVueModules.modules.forEach(component => {
     app.component('Prime'+component.name, component)
 })

@@ -1,12 +1,29 @@
 <template>
   <div class="card">
+    <div>
+      <Toolbar>
+        <template #start>
+          <prime-button label="Начать" class="p-button-lg" @click = finish />
+          <prime-button icon="pi pi-plus" class="mr-2" severity="secondary" text />
+          <prime-button icon="pi pi-print" class="mr-2" severity="secondary" text />
+          <prime-button icon="pi pi-upload" severity="secondary" text />
+        </template>
+
+        <template #center>
+          <IconField>
+            <InputIcon>
+              <i class="pi pi-search" />
+            </InputIcon>
+            <InputText placeholder="Search" />
+          </IconField>
+        </template>
+
+        <template #end> <SplitButton label="Save" :model="items"></SplitButton></template>
+      </Toolbar>
+    </div>
     <div class="p-fluid grid">
       <div class="centered">
-        <prime-button label="Начать" class="p-button-lg" @click = finish />
-        <prime-button label="Инфо" class="p-button-lg" @click = getInfo />
-      </div>
-      <div class="centered">
-        <records-table></records-table>
+        <tabs-component></tabs-component>
       </div>
     </div>
   </div>
@@ -14,26 +31,23 @@
 
 <script>
 import {mapActions, mapMutations} from "vuex";
-import RecordsTable from "@/components/RecordsTable.vue";
+import TabsComponent from "@/components/TabsComponent.vue";
+import Toolbar from "primevue/toolbar";
+
 
 export default {
   name: "StageStart",
-  components: {RecordsTable},
+  // eslint-disable-next-line vue/no-unused-components
+  components: {TabsComponent, Toolbar},
   methods: {
     ...mapMutations({
-
     }),
     ...mapActions({
       getIntersections: "app/getIntersections",
-      getInform: "app/getInform"
     }),
     finish(){
       this.getIntersections()
-    },
-    getInfo(){
-      this.getInform()
     }
-
   }
 }
 </script>

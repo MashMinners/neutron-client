@@ -3,9 +3,6 @@
     <prime-message severity="info" :closable="false">{{ stepMessage }}</prime-message>
   </div>
   <div id="app-content">
-    <div class="mt-1 mb-3">
-      <prime-progress-bar :value = stepCompletion :show-value="false"></prime-progress-bar>
-    </div>
       <prime-fieldset>
         <template #legend>
           {{ stepTitle }}
@@ -17,7 +14,6 @@
       </prime-fieldset>
   </div>
 </template>
-
 <script>
 import {mapGetters} from "vuex";
 

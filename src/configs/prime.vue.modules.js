@@ -12,18 +12,20 @@ import Card from 'primevue/card';
 import Knob from 'primevue/knob';
 import Panel from 'primevue/panel';
 import Toolbar from 'primevue/toolbar';
-import Sidebar from 'primevue/sidebar';
 import Menu from 'primevue/menu';
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import ('primevue/resources/themes/tailwind-light/theme.css')
-import ('primevue/resources/primevue.min.css')
+import Tabs from 'primevue/tabs';
+import TabList from 'primevue/tablist';
+import Tab from 'primevue/tab';
+import TabPanels from 'primevue/tabpanels';
+import TabPanel from 'primevue/tabpanel';
 import ('primeicons/primeicons.css')
 import ('primeflex/primeflex.css');
 export default {
   modules: [
-      InputText, Button, Fieldset, ProgressBar, Dialog,  Message, Textarea, Image, Card, Knob, Panel, Toolbar, Sidebar,
-      Menu, DataTable, Column
+      InputText, Button, Fieldset, ProgressBar, Dialog,  Message, Textarea, Image, Card, Knob, Panel, Toolbar,
+      Menu, DataTable, Column, Tabs, TabList, TabPanel, Tab, TabPanels
   ],
   directives: [
         {name: "tooltip", subject: Tooltip}

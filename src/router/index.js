@@ -14,16 +14,6 @@ const routes = [
         component: function () {
             return import('../views/StageStart.vue')
         }
-    },
-    {
-        path: '/scanning',
-        name: 'scanning',
-        meta: {
-            layout: 'Application'
-        },
-        component: function () {
-            return import('../views/StageScanning.vue')
-        }
     }
 ]
 
