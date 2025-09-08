@@ -10,12 +10,12 @@
         </template>
 
         <template #center>
-          <IconField>
-            <InputIcon>
+          <prime-icon-field>
+            <prime-input-icon>
               <i class="pi pi-search" />
-            </InputIcon>
-            <InputText placeholder="Search" />
-          </IconField>
+            </prime-input-icon>
+            <prime-input-text placeholder="Search" />
+          </prime-icon-field>
         </template>
 
         <template #end> <SplitButton label="Save" :model="items"></SplitButton></template>
@@ -33,12 +33,13 @@
 import {mapActions, mapMutations} from "vuex";
 import TabsComponent from "@/components/TabsComponent.vue";
 import Toolbar from "primevue/toolbar";
+import {SplitButton} from "primevue";
 
 
 export default {
   name: "StageStart",
   // eslint-disable-next-line vue/no-unused-components
-  components: {TabsComponent, Toolbar},
+  components: {TabsComponent, Toolbar, SplitButton},
   methods: {
     ...mapMutations({
     }),
