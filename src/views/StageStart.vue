@@ -4,6 +4,7 @@
       <Toolbar>
         <template #start>
           <prime-button label="Начать" class="p-button-lg" @click = finish />
+          <prime-button label="Очистить DP" class="p-button-lg" @click = truncateDP />
           <prime-button icon="pi pi-plus" class="mr-2" severity="secondary" text />
           <prime-button icon="pi pi-print" class="mr-2" severity="secondary" text />
           <prime-button icon="pi pi-upload" severity="secondary" text />
@@ -45,9 +46,13 @@ export default {
     }),
     ...mapActions({
       getIntersections: "app/getIntersections",
+      truncateDPRegistryTable: "app/truncateDPRegistryTable"
     }),
     finish(){
       this.getIntersections()
+    },
+    truncateDP(){
+      this.truncateDPRegistryTable()
     }
   }
 }
