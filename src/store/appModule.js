@@ -1,4 +1,4 @@
-import connections from "@/configs/connections";
+//import connections from "@/configs/connections";
 import axios from "axios";
 
 export const appModule = {
@@ -12,21 +12,14 @@ export const appModule = {
             title: 'Стоматология',
             message: 'Работа с реестром по стоматологии'
         },
-        stage: {
-            title: 'Титул',
-            message: 'Мессадж'
+        mySQLRecords: {
+            inserted: 0,
+            deleted: 0
         }
     }),
     getters: {
         getIntersections(state){
             return state.intersections;
-        },
-        //Steps
-        getStepTitle(state){
-          return state.stage.title;
-        },
-        getStepMessage(state){
-            return state.stage.message;
         },
         //Pages
         getPageTitle(state){
@@ -45,23 +38,24 @@ export const appModule = {
         // eslint-disable-next-line no-unused-vars
         ['FINISH'](state, response){
 
+        },
+        // eslint-disable-next-line no-unused-vars
+        ['UPLOAD_BUFFER_REGISTRY'](state, response){
+            state.mySQLRecords.inserted = response.inserted;
+            state.mySQLRecords.deleted = response.deleted;
+            state.page.message = state.mySQLRecords.inserted+' / '+state.mySQLRecords.deleted;
+        },
+        // eslint-disable-next-line no-unused-vars
+        ['TRUNCATE_BUFFER_REGISTRY'](state, response){
+            state.page.message = response;
         }
     },
     actions: {
         // eslint-disable-next-line no-unused-vars
         async getIntersections({state, commit}, payload) {
-            const params = {}
             // eslint-disable-next-line no-unused-vars
-            const response = await axios.get('http://192.168.0.10/stom/intersections', {params});
-            console.log(response.data)
+            const response = await axios.get('http://192.168.0.10/stom/intersections?XDEBUG_SESSION_START=PHPSTORM', {});
             commit('GET_INTERSECTIONS', response.data);
-        },
-        // eslint-disable-next-line no-unused-vars
-        async truncateDPRegistryTable ({state, commit}){
-            const response = await axios.delete(connections.api.production.DPTruncate ? connections.api.production.DPTruncate : connections.api.dev.DPTruncate.toString(), {});
-            //const response = await axios.delete('http://192.168.0.10/dp/registry/truncate', {});
-            console.log(connections.api.dev.DPTruncate)
-            commit('FINISH', response)
         },
         //РАБОТА С БУФЕРОМ
         // eslint-disable-next-line no-unused-vars
@@ -69,13 +63,12 @@ export const appModule = {
             const params = {registerType: registerType}
             //const response = await axios.get(connections.api.production.uploadBufferRegistry ? connections.api.production.uploadBufferRegistry : connections.api.dev.uploadBufferRegistry, {params});
             const response = await axios.get('http://192.168.0.10/buffer/registry/upload?XDEBUG_SESSION_START=PHPSTORM', {params});
-            console.log(params)
-            console.log(response)
+            commit('UPLOAD_BUFFER_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateBufferRegistry({state, commit}) {
             const response = await axios.delete('http://192.168.0.10/buffer/registry/truncate', {});
-            console.log(response)
+            commit('TRUNCATE_BUFFER_REGISTRY', response.data)
         },
 
         //РАБОТА С ВИЗИТАМИ (Стоматология)
