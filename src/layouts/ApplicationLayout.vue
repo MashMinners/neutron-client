@@ -1,17 +1,10 @@
 <template>
-  <div id="app-header">
-    <prime-message severity="info" :closable="false">{{ stepMessage }}</prime-message>
-  </div>
+  <div id="app-header"></div>
   <div id="app-content">
-      <prime-fieldset>
-        <template #legend>
-          {{ stepTitle }}
-        </template>
         <!--suppress JSValidateTypes -->
         <component
             :is="getComponent"
         />
-      </prime-fieldset>
   </div>
 </template>
 <script>

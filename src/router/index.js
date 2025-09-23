@@ -12,7 +12,7 @@ const routes = [
             layout: 'Application'
         },
         component: function () {
-            return import('../views/StageStart.vue')
+            return import('../views/StomatologyPage.vue')
         }
     }
 ]

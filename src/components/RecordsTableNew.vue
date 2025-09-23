@@ -9,7 +9,8 @@
                       paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
                       :rowsPerPageOptions="[10,20,50]"
                       currentPageReportTemplate="Показано {first} - {last} из {totalRecords}">
-      <prime-column field="stom_register_patient" header="Пациент"></prime-column>
+      <prime-column field="stom_visits_patient" header="Пациент"></prime-column>
+      <prime-column field="stom_visits_patient_insurance_policy" header="Полис"></prime-column>
       <prime-column field="visit_date" header="Дата последнего посещения" :sortable="true"></prime-column>
       <prime-column field="stom_register_treatment_start" header="Дата начала лечения (РЕЕСТР)"></prime-column>
       <prime-column field="stom_register_treatment_end" header="Дата окончания лечения (РЕЕСТР)"></prime-column>
