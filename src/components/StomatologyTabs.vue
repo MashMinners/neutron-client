@@ -5,6 +5,7 @@
         <Tab value="0">Удалить (30 дней)</Tab>
         <Tab value="1">Оставить (30+ дней)</Tab>
         <Tab value="2">Разделить (30-/30+)</Tab>
+        <Tab value="3">Некорректные цели посещений</Tab>
       </TabList>
       <TabPanels>
         <TabPanel value="0">
@@ -25,6 +26,12 @@
           </div>
           <records-table-new :records = getIntersections.dubious ></records-table-new>
         </TabPanel>
+        <TabPanel value="3">
+          <div v-if="getPurpose.length !==0">
+            <prime-message severity="error">По данным записям есть ошибки. Цель не соответсвует количеству посещений</prime-message>
+          </div>
+          <stomatology-incorrect-purposes-table :records = getPurpose></stomatology-incorrect-purposes-table>
+        </TabPanel>
       </TabPanels>
     </Tabs>
   </div>
@@ -37,17 +44,19 @@ import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 import RecordsTableNew from "@/components/RecordsTableNew.vue";
+import StomatologyIncorrectPurposesTable from "@/components/StomatologyIncorrectPurposesTable.vue";
 import {mapGetters} from "vuex";
 
 export default {
   name: "TabsComponent",
   computed: {
     ...mapGetters({
-      getIntersections: 'app/getIntersections',
+      getIntersections: 'app/getStomIntersections',
+      getPurpose: 'app/getStomIncorrectPurpose'
     })
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: {RecordsTableNew, Tabs, TabList, Tab, TabPanels, TabPanel}
+  components: {RecordsTableNew, Tabs, TabList, Tab, TabPanels, TabPanel, StomatologyIncorrectPurposesTable }
 }
 </script>
 

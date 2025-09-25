@@ -10,11 +10,10 @@
       <div>
         <Toolbar>
           <template #start>
-            <prime-button label="Загрузить визиты" class="p-button mr-2" severity="warn" @click ="uploadSTOMVisits"/>
-            <prime-button label="Очистить визиты" class="p-button mr-2" severity="danger" @click ="truncateSTOMVisits"/>
-            <prime-button label="Загрузить реестр (буфер)" class="p-button mr-2" severity="info" @click="uploadBufferRegistry('STOM')"/>
-            <prime-button label="Очистить реестр (буфер)" class="p-button mr-2" severity="danger" @click = truncateBufferRegistry />
+            <SplitButton label="Визиты" class="mr-2" :model="visitItems" severity="warn"></SplitButton>
+            <SplitButton label="Буфер>" class="mr-2" :model="bufferItems" severity="info"></SplitButton>
             <prime-button label="Показать пересечения (30 дней)" class="p-button mr-2" @click = showIntersections />
+            <prime-button label="Показать некорректные цели" class="p-button mr-2" @click = showPurposes />
           </template>
           <template #center></template>
           <template #end>
@@ -104,20 +103,57 @@ export default {
           },
         }
       ],
+      bufferItems: [
+        {
+          label: 'Загрузить реестр',
+          icon: 'pi pi-refresh',
+          command: () => {
+            this.uploadBuffer();
+          },
+        },
+        {
+          label: 'Очистить буфер',
+          icon: 'pi pi-refresh',
+          command: () => {
+            this.truncateBuffer();
+          },
+        },
+      ],
+      visitItems: [
+        {
+          label: 'Загрузить визиты',
+          icon: 'pi pi-refresh',
+          command: () => {
+            this.uploadVisits();
+          },
+        },
+        {
+          label: 'Очистить визиты',
+          icon: 'pi pi-refresh',
+          command: () => {
+            this.truncateVisits();
+          },
+        },
+      ]
     };
   },
   methods: {
     ...mapMutations({
     }),
     ...mapActions({
-      getIntersections: "app/getIntersections",
-      uploadBufferRegistry: "app/uploadBufferRegistry",
-      truncateBufferRegistry: "app/truncateBufferRegistry",
-      uploadSTOMVisits: "app/uploadSTOMVisits",
-      truncateSTOMVisits: "app/truncateSTOMVisits",
+      getIntersections: "app/getStomIntersections",
+      getPurposes: "app/getStomIncorrectPurposes",
+
+      uploadBuffer: "app/uploadBufferSTOMRegistry",
+      truncateBuffer: "app/truncateBufferSTOMRegistry",
+      uploadVisits: "app/uploadVisits",
+      truncateVisits: "app/truncateVisits",
     }),
     showIntersections(){
       this.getIntersections()
+    },
+    showPurposes(){
+      this.getPurposes()
     }
   }
 }
