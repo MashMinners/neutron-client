@@ -14,6 +14,16 @@ const routes = [
         component: function () {
             return import('../views/StomatologyPage.vue')
         }
+    },
+    {
+        path: '/disp',
+        name: 'disp',
+        meta: {
+            layout: 'Application'
+        },
+        component: function () {
+            return import('../views/DispPage.vue')
+        }
     }
 ]
 
