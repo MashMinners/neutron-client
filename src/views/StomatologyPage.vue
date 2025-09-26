@@ -11,7 +11,7 @@
         <Toolbar>
           <template #start>
             <SplitButton label="Визиты" class="mr-2" :model="visitItems" severity="warn"></SplitButton>
-            <SplitButton label="Буфер>" class="mr-2" :model="bufferItems" severity="info"></SplitButton>
+            <SplitButton label="Буфер" class="mr-2" :model="bufferItems" severity="info"></SplitButton>
             <prime-button label="Показать пересечения (30 дней)" class="p-button mr-2" @click = showIntersections />
             <prime-button label="Показать некорректные цели" class="p-button mr-2" @click = showPurposes />
           </template>
@@ -23,18 +23,16 @@
       </div>
       <div class="p-fluid grid">
         <div class="centered">
-          <tabs-component></tabs-component>
+          <stomatology-tabs></stomatology-tabs>
         </div>
       </div>
     </prime-fieldset>
-
-
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import TabsComponent from "@/components/StomatologyTabs.vue";
+import StomatologyTabs from "@/components/StomatologyBuffer/StomatologyTabs.vue";
 import Toolbar from "primevue/toolbar";
 import {SplitButton} from "primevue";
 
@@ -49,60 +47,9 @@ export default {
     })
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: {TabsComponent, Toolbar, SplitButton},
+  components: {StomatologyTabs, Toolbar, SplitButton},
   data() {
     return {
-      items: [
-        {
-          label: 'Стоматология',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.uploadBufferRegistry('STOM');
-          },
-        },
-        {
-          label: '1 этап',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.getIntersections();
-          },
-        },
-        {
-          label: '2 этап',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.getIntersections();
-          },
-        },
-        {
-          label: 'Проф. осмотры',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.getIntersections();
-          },
-        },
-        {
-          label: 'Углубленная',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.getIntersections();
-          },
-        },
-        {
-          label: 'Репродуктивное 1 этап',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.getIntersections();
-          },
-        },
-        {
-          label: 'Репродуктивное 2 этап',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.getIntersections();
-          },
-        }
-      ],
       bufferItems: [
         {
           label: 'Загрузить реестр',

@@ -27,7 +27,7 @@
 <script>
 //import {mapGetters} from "vuex";
 export default {
-  name: "RecordsTableNew",
+  name: "StomatologyBufferTable",
   props: {
     records: [] // Объявляем, что ожидаем строку
   }

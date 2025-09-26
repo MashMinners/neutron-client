@@ -17,9 +17,7 @@ export default {
       return (this.$route.matched[0].components.default)
     },
     ...mapGetters({
-      //STEPS
-      stepTitle: 'app/getStepTitle',
-      stepMessage: 'app/getStepMessage'
+
     })
   }
 }

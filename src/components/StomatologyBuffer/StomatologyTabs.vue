@@ -12,19 +12,19 @@
           <div v-if="getIntersections.bad.length !==0">
             <prime-message severity="error">Записи должны быть удалены из из реестра, так как пересечения попадают в 30-ти дневный период</prime-message>
           </div>
-          <records-table-new :records = getIntersections.bad ></records-table-new>
+          <stomatology-buffer-table :records = getIntersections.bad ></stomatology-buffer-table>
         </TabPanel>
         <TabPanel value="1">
           <div v-if="getIntersections.good.length !==0">
             <prime-message severity="success">Записи должны быть оставленны в реестре, так как пересечений по ним в 30-ти дневный период нет</prime-message>
           </div>
-          <records-table-new :records = getIntersections.good ></records-table-new>
+          <stomatology-buffer-table :records = getIntersections.good ></stomatology-buffer-table>
         </TabPanel>
         <TabPanel value="2">
           <div v-if="getIntersections.dubious.length !==0">
             <prime-message severity="warn">Записи должны быть проанализированны, так как часть случаев имеют пересечения в 30-ти дневный период, а часть нет</prime-message>
           </div>
-          <records-table-new :records = getIntersections.dubious ></records-table-new>
+          <stomatology-buffer-table :records = getIntersections.dubious ></stomatology-buffer-table>
         </TabPanel>
         <TabPanel value="3">
           <div v-if="getPurpose.length !==0">
@@ -43,12 +43,12 @@ import TabList from 'primevue/tablist';
 import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
-import RecordsTableNew from "@/components/RecordsTableNew.vue";
-import StomatologyIncorrectPurposesTable from "@/components/StomatologyIncorrectPurposesTable.vue";
+import StomatologyBufferTable from "@/components/StomatologyBuffer/StomatologyBufferTable.vue";
+import StomatologyIncorrectPurposesTable from "@/components/StomatologyBuffer/StomatologyIncorrectPurposesTable.vue";
 import {mapGetters} from "vuex";
 
 export default {
-  name: "TabsComponent",
+  name: "StomatologyTabs",
   computed: {
     ...mapGetters({
       getIntersections: 'app/getStomIntersections',
@@ -56,7 +56,7 @@ export default {
     })
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: {RecordsTableNew, Tabs, TabList, Tab, TabPanels, TabPanel, StomatologyIncorrectPurposesTable }
+  components: {StomatologyBufferTable, Tabs, TabList, Tab, TabPanels, TabPanel, StomatologyIncorrectPurposesTable }
 }
 </script>
 
