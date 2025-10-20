@@ -20,12 +20,13 @@ import TabList from 'primevue/tablist';
 import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
+import Drawer from "primevue/drawer";
 import ('primeicons/primeicons.css')
 import ('primeflex/primeflex.css');
 export default {
   modules: [
       InputText, Button, Fieldset, ProgressBar, Dialog,  Message, Textarea, Image, Card, Knob, Panel, Toolbar,
-      Menu, DataTable, Column, Tabs, TabList, TabPanel, Tab, TabPanels
+      Menu, DataTable, Column, Tabs, TabList, TabPanel, Tab, TabPanels, Drawer
   ],
   directives: [
         {name: "tooltip", subject: Tooltip}
