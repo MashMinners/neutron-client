@@ -14,6 +14,7 @@
             <SplitButton label="Буфер" class="mr-2" :model="bufferItems" severity="info"></SplitButton>
             <prime-button label="Показать пересечения (30 дней)" class="p-button mr-2" @click = showIntersections />
             <prime-button label="Показать некорректные цели" class="p-button mr-2" @click = showPurposes />
+            <prime-button label="Показать разорванные случаи" class="p-button mr-2" @click = showTornCases />
           </template>
           <template #center></template>
           <template #end>
@@ -90,6 +91,7 @@ export default {
     ...mapActions({
       getIntersections: "app/getStomIntersections",
       getPurposes: "app/getStomIncorrectPurposes",
+      getTornCases: "app/getTornCases",
 
       uploadBuffer: "app/uploadBufferSTOMRegistry",
       truncateBuffer: "app/truncateBufferSTOMRegistry",
@@ -101,6 +103,9 @@ export default {
     },
     showPurposes(){
       this.getPurposes()
+    },
+    showTornCases(){
+      this.getTornCases()
     }
   }
 }

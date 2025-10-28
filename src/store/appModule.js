@@ -9,6 +9,7 @@ export const appModule = {
             dubious : []
         },
         stomIncorrectPurpose: [],
+        tornCases: [],
         dispIntersections: {
             bad : []
         },
@@ -26,7 +27,10 @@ export const appModule = {
             return state.stomIntersections;
         },
         getStomIncorrectPurpose(state){
-            return state.stomIncorrectPurpose
+            return state.stomIncorrectPurpose;
+        },
+        getStomTornCases(state){
+            return state.tornCases;
         },
         //Pages
         getPageTitle(state){
@@ -47,6 +51,9 @@ export const appModule = {
         },
         ['GET_STOM_INCORRECT_PURPOSES'](state, purposes){
             state.stomIncorrectPurpose = purposes
+        },
+        ['GET_TORN_CASES'](state, tornCases){
+            state.tornCases = tornCases
         },
         // eslint-disable-next-line no-unused-vars
         ['UPLOAD_BUFFER_STOM_REGISTRY'](state, response){
@@ -79,6 +86,11 @@ export const appModule = {
         async getStomIncorrectPurposes({state, commit}) {
             const response = await axios.get('http://192.168.0.10/buffer/stom/purposes?XDEBUG_SESSION_START=PHPSTORM');
             commit('GET_STOM_INCORRECT_PURPOSES', response.data);
+        },
+        // eslint-disable-next-line no-unused-vars
+        async getTornCases({state, commit}) {
+            const response = await axios.get('http://192.168.0.10/buffer/stom/torn-cases?XDEBUG_SESSION_START=PHPSTORM');
+            commit('GET_TORN_CASES', response.data);
         },
         // eslint-disable-next-line no-unused-vars
         async uploadBufferSTOMRegistry({state, commit}) {

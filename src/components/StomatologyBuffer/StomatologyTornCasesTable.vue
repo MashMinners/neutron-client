@@ -27,7 +27,7 @@
 <script>
 //import {mapGetters} from "vuex";
 export default {
-  name: "StomatologyIncorrectPurposesTable",
+  name: "StomatologyTornCasesTable",
   props: {
     records: [] // Объявляем, что ожидаем строку
   }

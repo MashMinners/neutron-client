@@ -6,6 +6,7 @@
         <Tab value="1">Оставить (30+ дней)</Tab>
         <Tab value="2">Разделить (30-/30+)</Tab>
         <Tab value="3">Некорректные цели посещений</Tab>
+        <Tab value="4">Разорванные случаи</Tab>
       </TabList>
       <TabPanels>
         <TabPanel value="0">
@@ -32,6 +33,12 @@
           </div>
           <stomatology-incorrect-purposes-table :records = getPurpose></stomatology-incorrect-purposes-table>
         </TabPanel>
+        <TabPanel value="4">
+          <div v-if="getTornCases.length !==0">
+            <prime-message severity="error">По данным записям есть ошибки. Цель не соответсвует количеству посещений</prime-message>
+          </div>
+          <stomatology-torn-cases-table :records = getTornCases></stomatology-torn-cases-table>
+        </TabPanel>
       </TabPanels>
     </Tabs>
   </div>
@@ -45,6 +52,7 @@ import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 import StomatologyBufferTable from "@/components/StomatologyBuffer/StomatologyBufferTable.vue";
 import StomatologyIncorrectPurposesTable from "@/components/StomatologyBuffer/StomatologyIncorrectPurposesTable.vue";
+import StomatologyTornCasesTable from "@/components/StomatologyBuffer/StomatologyTornCasesTable.vue";
 import {mapGetters} from "vuex";
 
 export default {
@@ -52,11 +60,15 @@ export default {
   computed: {
     ...mapGetters({
       getIntersections: 'app/getStomIntersections',
-      getPurpose: 'app/getStomIncorrectPurpose'
+      getPurpose: 'app/getStomIncorrectPurpose',
+      getTornCases: 'app/getStomTornCases'
     })
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: {StomatologyBufferTable, Tabs, TabList, Tab, TabPanels, TabPanel, StomatologyIncorrectPurposesTable }
+  components: {
+    StomatologyTornCasesTable, StomatologyBufferTable, StomatologyIncorrectPurposesTable, Tabs, TabList, Tab,
+    TabPanels, TabPanel,
+  }
 }
 </script>
 
