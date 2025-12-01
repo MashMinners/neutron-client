@@ -5,8 +5,13 @@
         <Tab value="0">Удалить (30 дней)</Tab>
         <Tab value="1">Оставить (30+ дней)</Tab>
         <Tab value="2">Разделить (30-/30+)</Tab>
-        <Tab value="3">Некорректные цели посещений</Tab>
+        <Tab value="3">Некорректные цели посещений Excel</Tab>
         <Tab value="4">Разорванные случаи</Tab>
+        <Tab value="5">Отсуствует код зуба</Tab>
+        <Tab value="6">Присутсвует код зуба</Tab>
+        <Tab value="7">Два диагноза на один зуб</Tab>
+        <Tab value="8">Некорректные цели посещений XML</Tab>
+        <Tab value="9">Некорректные услуги</Tab>
       </TabList>
       <TabPanels>
         <TabPanel value="0">

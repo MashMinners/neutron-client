@@ -10,12 +10,11 @@
       <div>
         <Toolbar>
           <template #start>
-            <SplitButton label="Визиты" class="mr-2" :model="visitItems" severity="warn"></SplitButton>
-            <SplitButton label="Буфер" class="mr-2" :model="bufferItems" severity="info"></SplitButton>
+            <SplitButton label="Данные Excel" class="mr-2" :model="excelDataItems" severity="warn"></SplitButton>
+            <SplitButton label="Данные XML" class="mr-2" :model="xmlDataItems" severity="info"></SplitButton>
             <prime-button label="Показать пересечения (30 дней)" class="p-button mr-2" @click = showIntersections />
             <prime-button label="Показать некорректные цели" class="p-button mr-2" @click = showPurposes />
             <prime-button label="Показать разорванные случаи" class="p-button mr-2" @click = showTornCases />
-            <SplitButton label="Проверка XML" class="mr-2" :model="teethItems" severity="info"></SplitButton>
           </template>
           <template #center></template>
           <template #end>
@@ -52,23 +51,7 @@ export default {
   components: {StomatologyTabs, Toolbar, SplitButton},
   data() {
     return {
-      bufferItems: [
-        {
-          label: 'Загрузить реестр',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.uploadBuffer();
-          },
-        },
-        {
-          label: 'Очистить буфер',
-          icon: 'pi pi-refresh',
-          command: () => {
-            this.truncateBuffer();
-          },
-        },
-      ],
-      visitItems: [
+      excelDataItems: [
         {
           label: 'Загрузить визиты',
           icon: 'pi pi-refresh',
@@ -83,8 +66,34 @@ export default {
             this.truncateVisits();
           },
         },
+        {
+          label: 'Загрузить реестр',
+          icon: 'pi pi-refresh',
+          command: () => {
+            this.uploadBuffer();
+          },
+        },
+        {
+          label: 'Очистить реестр',
+          icon: 'pi pi-refresh',
+          command: () => {
+            this.truncateBuffer();
+          },
+        },
       ],
-      teethItems: [
+      xmlDataItems: [
+        {
+          label: 'Загрузить данные XML',
+          icon: 'pi pi-refresh',
+
+        },
+        {
+          label: 'Очистить данные XML',
+          icon: 'pi pi-refresh',
+
+        },
+      ],
+      xmlItems: [
         {
           label: 'Отсутствует код зуба',
           icon: 'pi pi-refresh',
@@ -121,7 +130,7 @@ export default {
           },
         },
 
-      ]
+      ],
     };
   },
   methods: {
