@@ -3,6 +3,29 @@ import axios from "axios";
 
 export const appModule = {
     state:() => ({
+        section: {
+            title: 'Начало'
+        },
+        menuItems: [
+            {
+                label: 'Главная',
+                icon: 'pi pi-home',
+                route: '/app/main',
+                title: 'Главная'
+            },
+            {
+                label: 'Стоматология',
+                icon: 'pi pi-book',
+                route: '/app/registry/stom',
+                title: 'Реестры по стоматологии'
+            },
+            {
+                label: 'Диспансеризация',
+                icon: 'pi pi-book',
+                route: '/app/registry/disp',
+                title: 'Реестры по диспансеризации'
+            },
+        ],
         stomIntersections: {
             bad : [],
             good: [],
@@ -23,6 +46,12 @@ export const appModule = {
         }
     }),
     getters: {
+        getSectionTitle(state){
+            return state.section.title;
+        },
+        getMenuItems(state) {
+            return state.menuItems;
+        },
         getStomIntersections(state){
             return state.stomIntersections;
         },
@@ -75,6 +104,9 @@ export const appModule = {
             state.dispIntersections.bad = intersections
 
         },
+        ['SET_SECTION_TITLE'](state, title){
+            state.section.title = title
+        }
     },
     actions: {
         // eslint-disable-next-line no-unused-vars

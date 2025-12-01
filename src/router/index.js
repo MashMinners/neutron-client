@@ -2,21 +2,21 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
-        path: '/start',
-        redirect: '/'
+        path: '/',
+        redirect: '/app/main'
     },
     {
-        path: '/',
+        path: '/app/registry/stom',
         name: 'start',
         meta: {
             layout: 'Application'
         },
         component: function () {
-            return import('../views/StomatologyPage.vue')
+            return import('../views/StomatologyPageView.vue')
         }
     },
     {
-        path: '/disp',
+        path: '/app/registry/disp',
         name: 'disp',
         meta: {
             layout: 'Application'
