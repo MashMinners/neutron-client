@@ -15,10 +15,11 @@
             <prime-button label="Показать пересечения (30 дней)" class="p-button mr-2" @click = showIntersections />
             <prime-button label="Показать некорректные цели" class="p-button mr-2" @click = showPurposes />
             <prime-button label="Показать разорванные случаи" class="p-button mr-2" @click = showTornCases />
+            <SplitButton label="Проверка XML" class="mr-2" :model="teethItems" severity="info"></SplitButton>
           </template>
           <template #center></template>
           <template #end>
-            <SplitButton label="Загрузить реестры" class="mr-2" :model="items"></SplitButton>
+            <prime-button label="Очистить XML реестры" class="mr-2" severity="danger"></prime-button>
           </template>
         </Toolbar>
       </div>
@@ -82,6 +83,44 @@ export default {
             this.truncateVisits();
           },
         },
+      ],
+      teethItems: [
+        {
+          label: 'Отсутствует код зуба',
+          icon: 'pi pi-refresh',
+          command: () => {
+
+          },
+        },
+        {
+          label: 'Присутсвует код зуба',
+          icon: 'pi pi-refresh',
+          command: () => {
+
+          },
+        },
+        {
+          label: 'Два диагноза на один зуб',
+          icon: 'pi pi-refresh',
+          command: () => {
+
+          },
+        },
+        {
+          label: 'Некорректные цели',
+          icon: 'pi pi-refresh',
+          command: () => {
+
+          },
+        },
+        {
+          label: 'Некоректные услуги',
+          icon: 'pi pi-refresh',
+          command: () => {
+
+          },
+        },
+
       ]
     };
   },
