@@ -78,7 +78,10 @@ export default {
           }
         },
         {
-          label: 'Некорректные цели'
+          label: 'Некорректные цели',
+          command: ()=> {
+            this.setStomatologyBufferActiveComponent('StomatologyIncorrectPurposes');
+          }
         },
         {
           label: 'Некорректные услуги'

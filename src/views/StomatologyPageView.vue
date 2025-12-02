@@ -37,6 +37,8 @@
 import {mapGetters} from "vuex";
 import StomatologyBufferMenuBar from "@/components/StomatologyBuffer/StomatologyBufferMenuBar";
 import StomatologyIntersections from "@/components/StomatologyBuffer/Intersections/StomatologyIntersections";
+import StomatologyIncorrectPurposes
+  from "@/components/StomatologyBuffer/IncorrectPurposes/StomatologyIncorrectPurposes";
 
 export default {
   name: "StageStart",
@@ -47,7 +49,7 @@ export default {
     })
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: {StomatologyBufferMenuBar, StomatologyIntersections},
+  components: {StomatologyBufferMenuBar, StomatologyIntersections, StomatologyIncorrectPurposes},
 }
 </script>
 

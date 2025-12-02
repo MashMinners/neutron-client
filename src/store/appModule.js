@@ -59,7 +59,7 @@ export const appModule = {
         getStomIntersections(state){
             return state.stomIntersections;
         },
-        getStomIncorrectPurpose(state){
+        getStomExcelIncorrectPurpose(state){
             return state.stomIncorrectPurpose;
         },
         getStomTornCases(state){

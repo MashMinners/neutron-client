@@ -27,9 +27,12 @@
 <script>
 //import {mapGetters} from "vuex";
 export default {
-  name: "StomatologyIncorrectPurposesTable",
+  name: "StomatologyExcelIncorrectPurposesTable",
   props: {
-    records: [] // Объявляем, что ожидаем строку
+    records: {
+      type: Array,
+      default: () => [] // It's best practice to use a factory function for objects/arrays in default values
+    }
   }
 }
 </script>
