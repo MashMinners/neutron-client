@@ -87,7 +87,10 @@ export default {
           label: 'Некорректные услуги'
         },
         {
-          label: 'Разорванные случаи'
+          label: 'Разорванные случаи',
+          command: ()=> {
+            this.setStomatologyBufferActiveComponent('StomatologyTornCases');
+          }
         },
         {
           label: 'Ошибки по зубам'

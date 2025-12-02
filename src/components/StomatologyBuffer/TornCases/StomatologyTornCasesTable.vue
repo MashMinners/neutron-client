@@ -23,13 +23,15 @@
   </div>
 </template>
 
-
 <script>
 //import {mapGetters} from "vuex";
 export default {
   name: "StomatologyTornCasesTable",
   props: {
-    records: [] // Объявляем, что ожидаем строку
+    records: {
+      type: Array,
+      default: () => [] // It's best practice to use a factory function for objects/arrays in default values
+    }
   }
 }
 </script>

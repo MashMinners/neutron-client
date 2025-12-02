@@ -3,7 +3,7 @@
     <prime-tabs value="0" scrollable>
       <prime-tab-list>
         <prime-tab value="0">Некорректные цели (Excel)</prime-tab>
-        <prime-tab value="1">Некореектные цели (XML)</prime-tab>
+        <prime-tab value="1">Некорректные цели (XML)</prime-tab>
       </prime-tab-list>
       <prime-tab-panels>
         <prime-tab-panel value="0">

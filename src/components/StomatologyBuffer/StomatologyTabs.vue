@@ -57,7 +57,7 @@ import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 import StomatologyBufferTable from "@/components/StomatologyBuffer/StomatologyBufferTable.vue";
 import StomatologyIncorrectPurposesTable from "@/components/StomatologyBuffer/IncorrectPurposes/StomatologyExcelIncorrectPurposesTable.vue";
-import StomatologyTornCasesTable from "@/components/StomatologyBuffer/StomatologyTornCasesTable.vue";
+import StomatologyTornCasesTable from "@/components/StomatologyBuffer/TornCases/StomatologyTornCasesTable.vue";
 import {mapGetters} from "vuex";
 
 export default {
