@@ -22,10 +22,8 @@
         <stomatology-buffer-menu-bar></stomatology-buffer-menu-bar>
       </div>
       <prime-divider></prime-divider>
-      <prime-button label="Stom" @click="activeComponent = 'StomatologyTabs'"></prime-button>
-      <prime-button label="Disp" @click="activeComponent = 'DispTabs'"></prime-button>
-      <div class="p-fluid grid">
-        <div class="centered">
+      <div class="formgrid grid">
+        <div class="centered col-12">
           <component
               :is="activeComponent"
           />
@@ -36,41 +34,25 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
-import StomatologyTabs from "@/components/StomatologyBuffer/StomatologyTabs.vue";
+import {mapGetters} from "vuex";
 import StomatologyBufferMenuBar from "@/components/StomatologyBuffer/StomatologyBufferMenuBar";
-import DispTabs from "@/components/DispBuffer/DispTabs";
-
+import StomatologyIntersections from "@/components/StomatologyBuffer/Intersections/StomatologyIntersections";
 
 export default {
   name: "StageStart",
   computed: {
     ...mapGetters({
-      pageMessage: 'app/getPageMessage'
+      pageMessage: 'app/getPageMessage',
+      activeComponent: 'app/getStomatologyActiveComponent'
     })
   },
   // eslint-disable-next-line vue/no-unused-components
-  components: {StomatologyBufferMenuBar, StomatologyTabs, DispTabs},
-  data() {
-    return {
-      activeComponent: null
-    };
-  },
-  methods: {
-    ...mapActions({
-      getIntersections: "app/getStomIntersections",
-      getPurposes: "app/getStomIncorrectPurposes",
-      getTornCases: "app/getTornCases",
-
-      uploadBuffer: "app/uploadBufferSTOMRegistry",
-      truncateBuffer: "app/truncateBufferSTOMRegistry",
-      uploadVisits: "app/uploadVisits",
-      truncateVisits: "app/truncateVisits",
-    })
-  }
+  components: {StomatologyBufferMenuBar, StomatologyIntersections},
 }
 </script>
 
 <style scoped>
-
+.full-width{
+  width: 100%;
+}
 </style>

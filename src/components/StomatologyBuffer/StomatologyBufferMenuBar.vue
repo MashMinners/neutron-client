@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 
 export default {
   name: "StomatologyBufferMenuBar",
@@ -71,7 +71,11 @@ export default {
           ]
         },
         {
-          label: 'Пересечения (30 дней)'
+          label: 'Пересечения (30 дней)',
+          command: ()=> {
+            this.setStomatologyBufferActiveComponent('StomatologyIntersections');
+            //this.getIntersections();
+          }
         },
         {
           label: 'Некорректные цели'
@@ -99,6 +103,9 @@ export default {
       uploadVisits: "app/uploadVisits",
       truncateVisits: "app/truncateVisits",
     }),
+    ...mapMutations({
+      setStomatologyBufferActiveComponent: "app/SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT"
+    })
   }
 }
 </script>

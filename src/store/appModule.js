@@ -26,6 +26,7 @@ export const appModule = {
                 title: 'Реестры по диспансеризации'
             },
         ],
+        stomatologyBufferActiveComponent: null,
         stomIntersections: {
             bad : [],
             good: [],
@@ -51,6 +52,9 @@ export const appModule = {
         },
         getMenuItems(state) {
             return state.menuItems;
+        },
+        getStomatologyActiveComponent(state){
+            return state.stomatologyBufferActiveComponent
         },
         getStomIntersections(state){
             return state.stomIntersections;
@@ -90,7 +94,6 @@ export const appModule = {
             state.mySQLRecords.deleted = response.deleted;
             state.page.message = state.mySQLRecords.inserted+' / '+state.mySQLRecords.deleted;
         },
-        // eslint-disable-next-line no-unused-vars
         ['TRUNCATE_BUFFER_STOM_REGISTRY'](state, response){
             state.page.message = response;
         },
@@ -106,6 +109,9 @@ export const appModule = {
         },
         ['SET_SECTION_TITLE'](state, title){
             state.section.title = title
+        },
+        ['SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT'](state, component){
+            state.stomatologyBufferActiveComponent = component
         }
     },
     actions: {
