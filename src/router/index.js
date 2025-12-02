@@ -24,6 +24,18 @@ const routes = [
         component: function () {
             return import('../views/DispPage.vue')
         }
+    },
+
+
+    {
+        path: '/products',
+        name: 'products',
+        meta: {
+            layout: 'Application'
+        },
+        component: function () {
+            return import('../views/DispPage.vue')
+        }
     }
 ]
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tabs value="0">
+    <Tabs value="0" scrollable>
       <TabList>
         <Tab value="0">Удалить (30 дней)</Tab>
         <Tab value="1">Оставить (30+ дней)</Tab>

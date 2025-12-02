@@ -22,15 +22,22 @@ import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 import Drawer from "primevue/drawer";
 import Avatar from "primevue/avatar";
+import Ripple from 'primevue/ripple';
+import Menubar from 'primevue/menubar';
+import Divider from 'primevue/divider';
+import Badge from 'primevue/badge';
+import OverlayBadge from 'primevue/overlaybadge';
 import ('primeicons/primeicons.css')
 import ('primeflex/primeflex.css');
 export default {
   modules: [
       InputText, Button, Fieldset, ProgressBar, Dialog,  Message, Textarea, Image, Card, Knob, Panel, Toolbar,
-      Menu, DataTable, Column, Tabs, TabList, TabPanel, Tab, TabPanels, Drawer, Avatar
+      Menu, DataTable, Column, Tabs, TabList, TabPanel, Tab, TabPanels, Drawer, Avatar, Ripple, Menubar, Divider,
+      Badge, OverlayBadge
   ],
   directives: [
-        {name: "tooltip", subject: Tooltip}
+        {name: "tooltip", subject: Tooltip},
+        {name: "ripple", subject: Ripple}
     ],
   options: [
       {
