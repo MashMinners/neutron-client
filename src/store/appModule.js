@@ -117,68 +117,79 @@ export const appModule = {
     actions: {
         // eslint-disable-next-line no-unused-vars
         async getStomIntersections({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
+            const response = await axios.get('http://192.168.1.15/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
             commit('GET_STOM_INTERSECTIONS', response.data);
         },
         // eslint-disable-next-line no-unused-vars
-        async getStomIncorrectPurposes({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/buffer/stom/purposes?XDEBUG_SESSION_START=PHPSTORM');
+        async getStomExcelIncorrectPurposes({state, commit}) {
+            const response = await axios.get('http://192.168.1.15/buffer/stom/purposes?XDEBUG_SESSION_START=PHPSTORM');
             commit('GET_STOM_INCORRECT_PURPOSES', response.data);
         },
         // eslint-disable-next-line no-unused-vars
         async getTornCases({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/buffer/stom/torn-cases?XDEBUG_SESSION_START=PHPSTORM');
+            const response = await axios.get('http://192.168.1.15/buffer/stom/torn-cases?XDEBUG_SESSION_START=PHPSTORM');
             commit('GET_TORN_CASES', response.data);
         },
         // eslint-disable-next-line no-unused-vars
         async uploadBufferSTOMRegistry({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/buffer/stom/upload?XDEBUG_SESSION_START=PHPSTORM');
+            const response = await axios.get('http://192.168.1.15/buffer/stom/upload?XDEBUG_SESSION_START=PHPSTORM');
             commit('UPLOAD_BUFFER_STOM_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateBufferSTOMRegistry({state, commit}) {
-            const response = await axios.delete('http://192.168.0.10/buffer/stom/truncate');
+            const response = await axios.delete('http://192.168.1.15/buffer/stom/truncate');
             commit('TRUNCATE_BUFFER_STOM_REGISTRY', response.data)
+        },
+        // Заливка XML реестра по стоматологии
+        // eslint-disable-next-line no-unused-vars
+        async uploadXMLSTOMRegistry({state, commit}) {
+            const response = await axios.get('http://192.168.1.15/xml/stom/upload');
+            commit('TRUNCATE_BUFFER_STOM_REGISTRY', response.data)
+        },
+        // eslint-disable-next-line no-unused-vars
+        async truncateXMLSTOMRegistry({state, commit}) {
+            const response = await axios.delete('http://192.168.1.15/xml/stom/truncate');
+            console.log(response)
         },
 
         //РАБОТА С ВИЗИТАМИ (Стоматология)
         // eslint-disable-next-line no-unused-vars
         async uploadVisits({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/visits/upload');
+            const response = await axios.get('http://192.168.1.15/visits/upload');
             console.log(response)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateVisits({state, commit}) {
-            const response = await axios.delete('http://192.168.0.10/visits/truncate');
+            const response = await axios.delete('http://192.168.1.15/visits/truncate');
             console.log(response)
         },
 
         //РАБОТА С ИСТОРИЯМИ БОЛЕЗНИ
         // eslint-disable-next-line no-unused-vars
         async uploadIB({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/histories/upload');
+            const response = await axios.get('http://192.168.1.15/histories/upload');
             console.log(response)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateIB({state, commit}) {
-            const response = await axios.delete('http://192.168.0.10/histories/truncate');
+            const response = await axios.delete('http://192.168.1.15/histories/truncate');
             console.log(response)
         },
 
         //РАБОТА С РЕЕСТРОМ ДИСПАНСЕРИЗАЦИИ
         // eslint-disable-next-line no-unused-vars
         async uploadBufferDISPRegistry({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/buffer/disp/upload');
+            const response = await axios.get('http://192.168.1.15/buffer/disp/upload');
             commit('UPLOAD_BUFFER_DISP_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateBufferDISPRegistry({state, commit}) {
-            const response = await axios.delete('http://192.168.0.10/buffer/disp/truncate');
+            const response = await axios.delete('http://192.168.1.15/buffer/disp/truncate');
             commit('TRUNCATE_BUFFER_DISP_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
         async getDispIntersections({state, commit}) {
-            const response = await axios.get('http://192.168.0.10/buffer/disp/intersections');
+            const response = await axios.get('http://192.168.1.15/buffer/disp/intersections');
             commit('GET_DISP_INTERSECTIONS', response.data);
         },
     },

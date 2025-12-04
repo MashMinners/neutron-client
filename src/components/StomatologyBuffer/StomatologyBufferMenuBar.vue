@@ -9,6 +9,11 @@
         <i v-if="hasSubmenu" :class="['pi pi-angle-down ml-auto', { 'pi-angle-down': root, 'pi-angle-right': !root }]"></i>
       </a>
     </template>
+    <template #end>
+      <div class="flex items-center gap-2">
+        <prime-button label="Начать анализ" @click="StartAnalyze()"></prime-button>
+      </div>
+    </template>
   </prime-menubar>
 </div>
 </template>
@@ -28,7 +33,7 @@ export default {
               label: 'Загрузить',
               icon: 'pi pi-upload',
               items: [
-                  {
+                {
                   label: 'Загрузить визиты',
                   command: () => {
                     this.uploadVisits();
@@ -68,7 +73,7 @@ export default {
             {
               label: 'Загрузить данные XML',
               command: ()=> {
-
+                this.uploadXML();
               }
             },
             {
@@ -111,8 +116,12 @@ export default {
   methods: {
     ...mapActions({
       getIntersections: "app/getStomIntersections",
-      getPurposes: "app/getStomIncorrectPurposes",
+      getExcelPurposes: "app/getStomExcelIncorrectPurposes",
       getTornCases: "app/getTornCases",
+
+      //XML
+      uploadXML: "app/uploadXMLSTOMRegistry",
+      truncateXML: "",
 
       uploadBuffer: "app/uploadBufferSTOMRegistry",
       truncateBuffer: "app/truncateBufferSTOMRegistry",
@@ -121,7 +130,12 @@ export default {
     }),
     ...mapMutations({
       setStomatologyBufferActiveComponent: "app/SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT"
-    })
+    }),
+    StartAnalyze(){
+      this.getIntersections()
+      this.getExcelPurposes()
+      this.getTornCases()
+    }
   }
 }
 </script>
