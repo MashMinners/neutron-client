@@ -40,7 +40,7 @@ export default {
   components: {StomatologyIntersectionsTable},
   computed: {
     ...mapGetters({
-      getIntersections: 'app/getStomIntersections'
+      getIntersections: 'appStomModule/getStomIntersections'
     })
   }
 }

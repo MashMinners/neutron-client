@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      getIntersections: "app/getStomIntersections",
+      getIntersections: "appStomModule/getStomIntersections",
       getExcelPurposes: "app/getStomExcelIncorrectPurposes",
       getTornCases: "app/getTornCases",
 
