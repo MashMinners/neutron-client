@@ -140,10 +140,15 @@ export default {
       setStomatologyBufferActiveComponent: "app/SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT"
     }),
     StartAnalyze(){
-      this.getIntersections()
+      //this.getIntersections()
+      this.analyzeIntersections()
       this.getExcelPurposes()
       this.getTornCases()
       this.getIncorrectServicesAction()
+    },
+    analyzeIntersections(){
+      this.getIntersections()
+      this.$toast.add({ severity: 'success', summary: 'Загрузка завершена', detail: 'Загружены пересечения', life: 3000 });
     },
     show() {
       this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });
