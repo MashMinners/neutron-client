@@ -34,6 +34,10 @@ export const appModule = {
         },
         stomIncorrectPurpose: [],
         tornCases: [],
+        incorrectServices: {
+            HaveNoPrimary: [],
+            TwoOrMore: []
+        },
         dispIntersections: {
             bad : []
         },
@@ -64,6 +68,9 @@ export const appModule = {
         },
         getStomTornCases(state){
             return state.tornCases;
+        },
+        getIncorrectServices(state){
+            return state.incorrectServices
         },
         //Pages
         getPageTitle(state){
@@ -112,6 +119,10 @@ export const appModule = {
         },
         ['SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT'](state, component){
             state.stomatologyBufferActiveComponent = component
+        },
+        ['SET_INCORRECT_SERVICES'](state, services){
+            state.incorrectServices = services
+            console.log(services)
         }
     },
     actions: {
@@ -150,6 +161,12 @@ export const appModule = {
         async truncateXMLSTOMRegistry({state, commit}) {
             const response = await axios.delete('http://192.168.1.15/xml/stom/truncate');
             console.log(response)
+        },
+        // eslint-disable-next-line no-unused-vars
+        async getIncorrectServicesActions({state, commit}) {
+            //const response = await axios.get('http://192.168.1.15/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
+            const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
+            commit('SET_INCORRECT_SERVICES', response.data);
         },
 
         //РАБОТА С ВИЗИТАМИ (Стоматология)

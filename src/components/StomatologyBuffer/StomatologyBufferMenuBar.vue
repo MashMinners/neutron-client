@@ -99,7 +99,10 @@ export default {
           }
         },
         {
-          label: 'Некорректные услуги'
+          label: 'Некорректные услуги',
+          command: ()=> {
+            this.setStomatologyBufferActiveComponent('StomatologyIncorrectServices');
+          }
         },
         {
           label: 'Разорванные случаи',
@@ -118,6 +121,7 @@ export default {
       getIntersections: "appStomModule/getStomIntersections",
       getExcelPurposes: "app/getStomExcelIncorrectPurposes",
       getTornCases: "app/getTornCases",
+      getIncorrectServicesAction: "app/getIncorrectServicesActions",
 
       //XML
       uploadXML: "app/uploadXMLSTOMRegistry",
@@ -135,6 +139,7 @@ export default {
       this.getIntersections()
       this.getExcelPurposes()
       this.getTornCases()
+      this.getIncorrectServicesAction()
     }
   }
 }
