@@ -52,7 +52,6 @@ export default {
       }
     },
     getPacientFullName(data){
-      console.log(data)
       return data.stom_xml_lm_fam + ' ' + data.stom_xml_lm_im + ' ' + data.stom_xml_lm_ot
 
 

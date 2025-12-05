@@ -122,7 +122,6 @@ export const appModule = {
         },
         ['SET_INCORRECT_SERVICES'](state, services){
             state.incorrectServices = services
-            console.log(services)
         }
     },
     actions: {
