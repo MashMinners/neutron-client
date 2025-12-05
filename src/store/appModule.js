@@ -163,8 +163,7 @@ export const appModule = {
         },
         // eslint-disable-next-line no-unused-vars
         async getIncorrectServicesActions({state, commit}) {
-            //const response = await axios.get('http://192.168.1.15/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
-            const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
+            const response = await axios.get('http://192.168.1.15/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
             commit('SET_INCORRECT_SERVICES', response.data);
         },
 
