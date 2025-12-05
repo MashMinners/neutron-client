@@ -27,13 +27,14 @@ import Menubar from 'primevue/menubar';
 import Divider from 'primevue/divider';
 import Badge from 'primevue/badge';
 import OverlayBadge from 'primevue/overlaybadge';
+import Toast from 'primevue/toast';
 import ('primeicons/primeicons.css')
 import ('primeflex/primeflex.css');
 export default {
   modules: [
       InputText, Button, Fieldset, ProgressBar, Dialog,  Message, Textarea, Image, Card, Knob, Panel, Toolbar,
       Menu, DataTable, Column, Tabs, TabList, TabPanel, Tab, TabPanels, Drawer, Avatar, Ripple, Menubar, Divider,
-      Badge, OverlayBadge
+      Badge, OverlayBadge, Toast
   ],
   directives: [
         {name: "tooltip", subject: Tooltip},
@@ -45,6 +46,6 @@ export default {
       }
   ],
   services: [
-      {name: "toast", subject: ToastService}
+      ToastService
   ]
 }

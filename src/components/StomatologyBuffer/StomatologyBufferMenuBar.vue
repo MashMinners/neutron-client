@@ -1,21 +1,25 @@
 <template>
-<div>
-  <prime-menubar :model="menuBarItems">
-    <template #item="{item, props, hasSubmenu, root}">
-      <a v-ripple class="flex items-center" v-bind="props.action">
-        <span>{{ item.label }}</span>
-        <prime-badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" />
-        <span v-if="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
-        <i v-if="hasSubmenu" :class="['pi pi-angle-down ml-auto', { 'pi-angle-down': root, 'pi-angle-right': !root }]"></i>
-      </a>
-    </template>
-    <template #end>
-      <div class="flex items-center gap-2">
-        <prime-button label="Начать анализ" @click="StartAnalyze()"></prime-button>
-      </div>
-    </template>
-  </prime-menubar>
-</div>
+  <div>
+    <prime-menubar :model="menuBarItems">
+      <template #item="{item, props, hasSubmenu, root}">
+        <a v-ripple class="flex items-center" v-bind="props.action">
+          <span>{{ item.label }}</span>
+          <prime-badge v-if="item.badge" :class="{ 'ml-auto': !root, 'ml-2': root }" :value="item.badge" />
+          <span v-if="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+          <i v-if="hasSubmenu" :class="['pi pi-angle-down ml-auto', { 'pi-angle-down': root, 'pi-angle-right': !root }]"></i>
+        </a>
+      </template>
+      <template #end>
+        <div class="flex items-center gap-2">
+          <prime-button label="Начать анализ" @click="StartAnalyze()"></prime-button>
+          <prime-button label="Тосты" @click="show()"></prime-button>
+        </div>
+      </template>
+    </prime-menubar>
+  </div>
+  <div id="auxiliary">
+    <prime-toast/>
+  </div>
 </template>
 
 <script>
@@ -140,6 +144,9 @@ export default {
       this.getExcelPurposes()
       this.getTornCases()
       this.getIncorrectServicesAction()
+    },
+    show() {
+      this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });
     }
   }
 }
