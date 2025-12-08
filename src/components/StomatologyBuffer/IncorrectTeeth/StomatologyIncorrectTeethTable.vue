@@ -14,14 +14,11 @@
           {{getPacientFullName(slotProps.data)}}
         </template>
       </prime-column>
-      <prime-column field="stom_xml_lm_dr" header="Дата рождения"></prime-column>
       <prime-column field="stom_xml_lm_enp" header="Полис"></prime-column>
-      <prime-column header="Врач оказавший услугу">
-        <template #body="slotProps">
-          {{getDoctor(slotProps.data.stom_xml_hm_zsl_sl_iddokt)}}
-        </template>
-      </prime-column>
-      <prime-column field="stom_xml_hm_zsl_sl_date_1" header="Дата оказания"></prime-column>
+      <prime-column field="stom_xml_hm_zsl_date_z_1" header="Дата первого посещения" :sortable="true"></prime-column>
+      <prime-column field="stom_xml_hm_zsl_date_z_2" header="Дата последнего посещения" :sortable="true"></prime-column>
+      <prime-column field="stom_xml_pm_sl_stom_code_usl" header="Диагноз"></prime-column>
+      <prime-column field="stom_xml_pm_sl_stom_zub" header="Зуб"></prime-column>
     </prime-data-table>
   </div>
   <div v-else>
@@ -31,26 +28,13 @@
 
 <script>
 export default {
-  name: "StomatologyIncorrectServicesTable",
+  name: "StomatologyIncorrectTeethTable",
   props: {
     records: {
       type: Array,
       default: () => [] // It's best practice to use a factory function for objects/arrays in default values
     }
-  },
-  methods:{
-    getDoctor(SNILS){
-      switch (SNILS) {
-        case '05641628460':
-          return 'Усатых Е.В.'
-        case '06785590318':
-          return 'Нагаслаева В.А.'
-        case '04397483592':
-          return 'Кузьмина С.М.'
-        case '12978613304':
-          return 'Кулагина А.А.'
-      }
-    },
+  }, methods: {
     getPacientFullName(data){
       return data.stom_xml_lm_fam + ' ' + data.stom_xml_lm_im + ' ' + data.stom_xml_lm_ot
     }

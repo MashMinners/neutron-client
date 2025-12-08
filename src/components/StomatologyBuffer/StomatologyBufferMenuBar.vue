@@ -115,7 +115,10 @@ export default {
           }
         },
         {
-          label: 'Ошибки по зубам'
+          label: 'Ошибки по зубам',
+          command: ()=> {
+            this.setStomatologyBufferActiveComponent('StomatologyIncorrectTeeth');
+          }
         }
       ]
     }
@@ -125,7 +128,8 @@ export default {
       getIntersections: "appStomModule/getStomIntersections",
       getExcelPurposes: "app/getStomExcelIncorrectPurposes",
       getTornCases: "app/getTornCases",
-      getIncorrectServicesAction: "app/getIncorrectServicesActions",
+      getIncorrectServicesAction: "app/getIncorrectServicesAction",
+      getIncorrectTeethAction: "app/getIncorrectTeethAction",
 
       //XML
       uploadXML: "app/uploadXMLSTOMRegistry",
@@ -145,6 +149,7 @@ export default {
       this.getExcelPurposes()
       this.getTornCases()
       this.getIncorrectServicesAction()
+      this.getIncorrectTeethAction()
     },
     analyzeIntersections(){
       this.getIntersections()

@@ -41,6 +41,11 @@ export const appModule = {
         dispIntersections: {
             bad : []
         },
+        incorrectTeeth: {
+            incorrectTeeth: [],
+            incorrectRequiredTeeth: [],
+            simultaneousTeethInclusion: []
+        },
         page: {
             title: 'Стоматология',
             message: 'Работа с реестром по стоматологии'
@@ -82,6 +87,9 @@ export const appModule = {
         getDispIntersections(state){
             return state.dispIntersections;
         },
+        getIncorrectTeeth(state){
+            return state.incorrectTeeth;
+        }
     },
     mutations: {
         ['GET_STOM_INTERSECTIONS'](state, intersections){
@@ -122,6 +130,11 @@ export const appModule = {
         },
         ['SET_INCORRECT_SERVICES'](state, services){
             state.incorrectServices = services
+        },
+        ['SET_INCORRECT_TEETH'](state, teeth){
+            state.incorrectTeeth.incorrectTeeth = teeth.incorrectTeeth
+            state.incorrectTeeth.incorrectRequiredTeeth = teeth.incorrectRequiredTeeth
+            state.incorrectTeeth.simultaneousTeethInclusion = teeth.simultaneousTeethInclusion
         }
     },
     actions: {
@@ -162,9 +175,15 @@ export const appModule = {
             console.log(response)
         },
         // eslint-disable-next-line no-unused-vars
-        async getIncorrectServicesActions({state, commit}) {
-            const response = await axios.get('http://192.168.1.15/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
+        async getIncorrectServicesAction({state, commit}) {
+            const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
             commit('SET_INCORRECT_SERVICES', response.data);
+        },
+        // eslint-disable-next-line no-unused-vars
+        async getIncorrectTeethAction({state, commit}) {
+            const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-teeth?XDEBUG_SESSION_START=PHPSTORM');
+            commit('SET_INCORRECT_TEETH', response.data);
+            console.log(response.data)
         },
 
         //РАБОТА С ВИЗИТАМИ (Стоматология)
@@ -182,29 +201,29 @@ export const appModule = {
         //РАБОТА С ИСТОРИЯМИ БОЛЕЗНИ
         // eslint-disable-next-line no-unused-vars
         async uploadIB({state, commit}) {
-            const response = await axios.get('http://192.168.1.15/histories/upload');
+            const response = await axios.get('http://172.25.70.201/histories/upload');
             console.log(response)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateIB({state, commit}) {
-            const response = await axios.delete('http://192.168.1.15/histories/truncate');
+            const response = await axios.delete('http://172.25.70.201/histories/truncate');
             console.log(response)
         },
 
         //РАБОТА С РЕЕСТРОМ ДИСПАНСЕРИЗАЦИИ
         // eslint-disable-next-line no-unused-vars
         async uploadBufferDISPRegistry({state, commit}) {
-            const response = await axios.get('http://192.168.1.15/buffer/disp/upload');
+            const response = await axios.get('http://172.25.70.201/buffer/disp/upload');
             commit('UPLOAD_BUFFER_DISP_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
         async truncateBufferDISPRegistry({state, commit}) {
-            const response = await axios.delete('http://192.168.1.15/buffer/disp/truncate');
+            const response = await axios.delete('http://172.25.70.201/buffer/disp/truncate');
             commit('TRUNCATE_BUFFER_DISP_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
         async getDispIntersections({state, commit}) {
-            const response = await axios.get('http://192.168.1.15/buffer/disp/intersections');
+            const response = await axios.get('http://172.25.70.201/buffer/disp/intersections');
             commit('GET_DISP_INTERSECTIONS', response.data);
         },
     },

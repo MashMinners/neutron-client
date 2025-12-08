@@ -42,6 +42,7 @@ import StomatologyIncorrectPurposes
 import StomatologyTornCases from "@/components/StomatologyBuffer/TornCases/StomatologyTornCases";
 import StomatologyIncorrectServices
   from "@/components/StomatologyBuffer/IncorrectServices/StomatologyIncorrectServices";
+import StomatologyIncorrectTeeth from "@/components/StomatologyBuffer/IncorrectTeeth/StomatologyIncorrectTeeth";
 
 export default {
   name: "StageStart",
@@ -53,7 +54,7 @@ export default {
   },
   // eslint-disable-next-line vue/no-unused-components
   components: {StomatologyBufferMenuBar, StomatologyIntersections, StomatologyIncorrectPurposes, StomatologyTornCases,
-    StomatologyIncorrectServices},
+    StomatologyIncorrectServices, StomatologyIncorrectTeeth},
 }
 </script>
 
