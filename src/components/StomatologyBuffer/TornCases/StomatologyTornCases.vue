@@ -14,7 +14,7 @@ export default {
   components: {StomatologyTornCasesTable},
   computed:{
     ...mapGetters({
-      getTornCases: 'app/getStomTornCases'
+      getTornCases: 'appStomModule/getTornCases'
     })
   }
 }

@@ -125,11 +125,11 @@ export default {
   },
   methods: {
     ...mapActions({
-      getIntersections: "appStomModule/getIntersectionsAction",
-      getExcelPurposes: "appStomModule/getExcelIncorrectPurposesAction",
-      getTornCases: "appStomModule/getTornCasesAction",
-      getIncorrectServicesAction: "app/getIncorrectServicesAction",
-      getIncorrectTeethAction: "app/getIncorrectTeethAction",
+      getIntersectionsAction: "appStomModule/getIntersectionsAction",
+      getExcelPurposesAction: "appStomModule/getExcelIncorrectPurposesAction",
+      getTornCasesAction: "appStomModule/getTornCasesAction",
+      getIncorrectServicesAction: "appStomModule/getIncorrectServicesAction",
+      getIncorrectTeethAction: "appStomModule/getIncorrectTeethAction",
 
       //XML
       uploadXML: "appStomModule/uploadXMLRegistryAction",
@@ -145,13 +145,13 @@ export default {
     }),
     StartAnalyze(){
       this.analyzeIntersections()
-      this.getExcelPurposes()
-      this.getTornCases()
+      this.getExcelPurposesAction()
+      this.getTornCasesAction()
       this.getIncorrectServicesAction()
       this.getIncorrectTeethAction()
     },
     analyzeIntersections(){
-      this.getIntersections()
+      this.getIntersectionsAction()
       //if(result.bad.length !==0) {
         //this.$toast.add({ severity: 'success', summary: 'Загрузка завершена', detail: 'Загружены пересечения', life: 3000 });
       //}

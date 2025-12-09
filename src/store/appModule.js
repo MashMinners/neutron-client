@@ -26,8 +26,8 @@ export const appModule = {
                 title: 'Реестры по диспансеризации'
             },
         ],
-        stomatologyBufferActiveComponent: null,
-        stomIntersections: {
+        //stomatologyBufferActiveComponent: null,
+        /*stomIntersections: {
             bad : [],
             good: [],
             dubious : []
@@ -38,21 +38,22 @@ export const appModule = {
             HaveNoPrimary: [],
             TwoOrMore: []
         },
-        dispIntersections: {
-            bad : []
-        },
         incorrectTeeth: {
             incorrectTeeth: [],
             incorrectRequiredTeeth: [],
             simultaneousTeethInclusion: []
         },
-        page: {
-            title: 'Стоматология',
-            message: 'Работа с реестром по стоматологии'
-        },
         mySQLRecords: {
             inserted: 0,
             deleted: 0
+        }
+        */
+        dispIntersections: {
+            bad : []
+        },
+        page: {
+            title: 'Стоматология',
+            message: 'Работа с реестром по стоматологии'
         }
     }),
     getters: {
@@ -62,21 +63,27 @@ export const appModule = {
         getMenuItems(state) {
             return state.menuItems;
         },
-        getStomatologyActiveComponent(state){
-            return state.stomatologyBufferActiveComponent
-        },
-        getStomIntersections(state){
-            return state.stomIntersections;
-        },
-        getStomExcelIncorrectPurpose(state){
-            return state.stomIncorrectPurpose;
-        },
-        getStomTornCases(state){
-            return state.tornCases;
-        },
-        getIncorrectServices(state){
-            return state.incorrectServices
-        },
+        //getStomatologyActiveComponent(state){
+            //return state.stomatologyBufferActiveComponent
+        //},
+        //getStomIntersections(state){
+            //return state.stomIntersections;
+        //},
+        //getStomExcelIncorrectPurpose(state){
+            //return state.stomIncorrectPurpose;
+        //},
+        //getStomTornCases(state){
+            //return state.tornCases;
+        //},
+        //getIncorrectServices(state){
+            //return state.incorrectServices
+        //},
+        //getDispIntersections(state){
+            //return state.dispIntersections;
+        //},
+        //getIncorrectTeeth(state){
+            //return state.incorrectTeeth;
+        //},
         //Pages
         getPageTitle(state){
             return state.page.title;
@@ -84,15 +91,10 @@ export const appModule = {
         getPageMessage(state){
             return state.page.message;
         },
-        getDispIntersections(state){
-            return state.dispIntersections;
-        },
-        getIncorrectTeeth(state){
-            return state.incorrectTeeth;
-        }
+
     },
     mutations: {
-        ['GET_STOM_INTERSECTIONS'](state, intersections){
+        /*['GET_STOM_INTERSECTIONS'](state, intersections){
             state.stomIntersections.bad = intersections.bad
             state.stomIntersections.good = intersections.good
             state.stomIntersections.dubious = intersections.dubious
@@ -120,10 +122,6 @@ export const appModule = {
         },
         ['GET_DISP_INTERSECTIONS'](state, intersections){
             state.dispIntersections.bad = intersections
-
-        },
-        ['SET_SECTION_TITLE'](state, title){
-            state.section.title = title
         },
         ['SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT'](state, component){
             state.stomatologyBufferActiveComponent = component
@@ -135,11 +133,14 @@ export const appModule = {
             state.incorrectTeeth.incorrectTeeth = teeth.incorrectTeeth
             state.incorrectTeeth.incorrectRequiredTeeth = teeth.incorrectRequiredTeeth
             state.incorrectTeeth.simultaneousTeethInclusion = teeth.simultaneousTeethInclusion
-        }
+        }*/
+        ['SET_SECTION_TITLE'](state, title){
+            state.section.title = title
+        },
     },
     actions: {
         // eslint-disable-next-line no-unused-vars
-        async getStomIntersections({state, commit}) {
+       /* async getStomIntersections({state, commit}) {
             const response = await axios.get('http://192.168.1.15/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
             commit('GET_STOM_INTERSECTIONS', response.data);
         },
@@ -196,7 +197,7 @@ export const appModule = {
         async truncateVisits({state, commit}) {
             const response = await axios.delete('http://192.168.1.15/visits/truncate');
             console.log(response)
-        },
+        },*/
 
         //РАБОТА С ИСТОРИЯМИ БОЛЕЗНИ
         // eslint-disable-next-line no-unused-vars

@@ -33,7 +33,7 @@ export default {
   components: {StomatologyIncorrectServicesTable},
   computed: {
     ...mapGetters({
-      getIncorrectServices: 'app/getIncorrectServices'
+      getIncorrectServices: 'appStomModule/getIncorrectServices'
     })
   }
 }
