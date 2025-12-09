@@ -145,10 +145,10 @@ export default {
     }),
     StartAnalyze(){
       this.analyzeIntersections()
-      this.getExcelPurposesAction()
+      //this.getExcelPurposesAction()
       this.getTornCasesAction()
       this.getIncorrectServicesAction()
-      this.getIncorrectTeethAction()
+      //this.getIncorrectTeethAction()
     },
     analyzeIntersections(){
       this.getIntersectionsAction()

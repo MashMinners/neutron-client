@@ -57,10 +57,10 @@ export const appStomAnalyzeModule = {
         }
     },
     mutations:{
-        ['GET_INTERSECTIONS'](state, intersections){
-            state.intersections.bad = intersections.bad
-            state.intersections.good = intersections.good
-            state.intersections.dubious = intersections.dubious
+        ['SET_INTERSECTIONS'](state, intersections){
+            state.intersections.bad = intersections.bad ?? []
+            state.intersections.good = intersections.good ?? []
+            state.intersections.dubious = intersections.dubious ??[]
         },
         ['GET_INCORRECT_PURPOSES'](state, purposes){
             state.incorrectPurposes = purposes
@@ -106,7 +106,7 @@ export const appStomAnalyzeModule = {
         // eslint-disable-next-line no-unused-vars
         async getIntersectionsAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
-            commit('GET_INTERSECTIONS', response.data);
+            commit('SET_INTERSECTIONS', response.data);
         },
         // eslint-disable-next-line no-unused-vars
         async getExcelIncorrectPurposesAction({state, commit}) {
