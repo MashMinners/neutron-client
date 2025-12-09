@@ -7,10 +7,11 @@
       </prime-tab-list>
       <prime-tab-panels>
         <prime-tab-panel value="0">
-          <div v-if="getExcelIncorrectPurpose.length !==0">
+          <!--<div v-if="ex !==0">-->
+          <div v-if="excelIncorrectPurposes.length !==0">
             <prime-message severity="error">По данным записям есть ошибки. Цель не соответсвует количеству посещений</prime-message>
           </div>
-          <stomatology-excel-incorrect-purposes-table :records = getExcelIncorrectPurpose></stomatology-excel-incorrect-purposes-table>
+          <stomatology-excel-incorrect-purposes-table :records = excelIncorrectPurposes></stomatology-excel-incorrect-purposes-table>
         </prime-tab-panel>
         <prime-tab-panel value="1">
          123
@@ -31,7 +32,7 @@ export default {
   components: {StomatologyExcelIncorrectPurposesTable},
   computed: {
     ...mapGetters({
-      getExcelIncorrectPurpose:'app/getStomExcelIncorrectPurpose'
+      excelIncorrectPurposes:'appStomModule/getExcelIncorrectPurposes'
     })
   }
 }
