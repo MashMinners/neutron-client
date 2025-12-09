@@ -46,7 +46,7 @@ export default {
                 {
                   label: 'Загрузить реестр',
                   command: () => {
-                    this.uploadBuffer();
+                    this.uploadExcel();
                   }
                 }
               ]
@@ -64,7 +64,7 @@ export default {
                 {
                   label: 'Очистить реестр',
                   command: () => {
-                    this.truncateBuffer();
+                    this.truncateExcel();
                   },
                 }
               ]
@@ -92,32 +92,32 @@ export default {
           label: 'Пересечения (30 дней)',
           badge: 3,
           command: ()=> {
-            this.setStomatologyBufferActiveComponent('StomatologyIntersections');
+            this.setActiveComponent('StomatologyIntersections');
             //this.getIntersections();
           }
         },
         {
           label: 'Некорректные цели',
           command: ()=> {
-            this.setStomatologyBufferActiveComponent('StomatologyIncorrectPurposes');
+            this.setActiveComponent('StomatologyIncorrectPurposes');
           }
         },
         {
           label: 'Некорректные услуги',
           command: ()=> {
-            this.setStomatologyBufferActiveComponent('StomatologyIncorrectServices');
+            this.setActiveComponent('StomatologyIncorrectServices');
           }
         },
         {
           label: 'Разорванные случаи',
           command: ()=> {
-            this.setStomatologyBufferActiveComponent('StomatologyTornCases');
+            this.setActiveComponent('StomatologyTornCases');
           }
         },
         {
           label: 'Ошибки по зубам',
           command: ()=> {
-            this.setStomatologyBufferActiveComponent('StomatologyIncorrectTeeth');
+            this.setActiveComponent('StomatologyIncorrectTeeth');
           }
         }
       ]
@@ -125,23 +125,23 @@ export default {
   },
   methods: {
     ...mapActions({
-      getIntersections: "appStomModule/getStomIntersectionsAction",
-      getExcelPurposes: "app/getStomExcelIncorrectPurposes",
-      getTornCases: "app/getTornCases",
+      getIntersections: "appStomModule/getIntersectionsAction",
+      getExcelPurposes: "appStomModule/getExcelIncorrectPurposesAction",
+      getTornCases: "appStomModule/getTornCasesAction",
       getIncorrectServicesAction: "app/getIncorrectServicesAction",
       getIncorrectTeethAction: "app/getIncorrectTeethAction",
 
       //XML
-      uploadXML: "app/uploadXMLSTOMRegistry",
-      truncateXML: "app/truncateXMLSTOMRegistry",
-
-      uploadBuffer: "app/uploadBufferSTOMRegistry",
-      truncateBuffer: "app/truncateBufferSTOMRegistry",
-      uploadVisits: "app/uploadVisits",
-      truncateVisits: "app/truncateVisits",
+      uploadXML: "appStomModule/uploadXMLRegistryAction",
+      truncateXML: "appStomModule/truncateXMLRegistryAction",
+      //EXCEL
+      uploadExcel: "appStomModule/uploadExcelRegistryAction",
+      truncateExcel: "appStomModule/truncateExcelRegistryAction",
+      uploadVisits: "appStomModule/uploadVisitsAction",
+      truncateVisits: "appStomModule/truncateVisitsAction",
     }),
     ...mapMutations({
-      setStomatologyBufferActiveComponent: "app/SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT"
+      setActiveComponent: "appStomModule/SET_ACTIVE_COMPONENT"
     }),
     StartAnalyze(){
       this.analyzeIntersections()

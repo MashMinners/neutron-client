@@ -49,7 +49,7 @@ export default {
   computed: {
     ...mapGetters({
       pageMessage: 'app/getPageMessage',
-      activeComponent: 'app/getStomatologyActiveComponent'
+      activeComponent: 'appStomModule/getActiveComponent'
     })
   },
   // eslint-disable-next-line vue/no-unused-components
