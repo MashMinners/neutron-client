@@ -83,7 +83,7 @@ export default {
             {
               label: 'Очистить данные XML',
               command: ()=> {
-
+                this.truncateXML()
               }
             }
           ]
@@ -125,7 +125,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      getIntersections: "appStomModule/getStomIntersections",
+      getIntersections: "appStomModule/getStomIntersectionsAction",
       getExcelPurposes: "app/getStomExcelIncorrectPurposes",
       getTornCases: "app/getTornCases",
       getIncorrectServicesAction: "app/getIncorrectServicesAction",
@@ -133,7 +133,7 @@ export default {
 
       //XML
       uploadXML: "app/uploadXMLSTOMRegistry",
-      truncateXML: "",
+      truncateXML: "app/truncateXMLSTOMRegistry",
 
       uploadBuffer: "app/uploadBufferSTOMRegistry",
       truncateBuffer: "app/truncateBufferSTOMRegistry",
@@ -144,7 +144,6 @@ export default {
       setStomatologyBufferActiveComponent: "app/SET_STOMATOLOGY_BUFFER_ACTIVE_COMPONENT"
     }),
     StartAnalyze(){
-      //this.getIntersections()
       this.analyzeIntersections()
       this.getExcelPurposes()
       this.getTornCases()
@@ -153,7 +152,9 @@ export default {
     },
     analyzeIntersections(){
       this.getIntersections()
-      this.$toast.add({ severity: 'success', summary: 'Загрузка завершена', detail: 'Загружены пересечения', life: 3000 });
+      //if(result.bad.length !==0) {
+        //this.$toast.add({ severity: 'success', summary: 'Загрузка завершена', detail: 'Загружены пересечения', life: 3000 });
+      //}
     },
     show() {
       this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });
