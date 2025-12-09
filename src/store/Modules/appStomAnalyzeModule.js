@@ -103,7 +103,7 @@ export const appStomAnalyzeModule = {
         }
     },
     actions:{
-// eslint-disable-next-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
         async getIntersectionsAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
             commit('GET_INTERSECTIONS', response.data);

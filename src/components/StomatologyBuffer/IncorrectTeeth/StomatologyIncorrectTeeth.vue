@@ -14,13 +14,13 @@
           </div>
         </prime-tab-panel>
         <prime-tab-panel value="1">
-          <div v-if="getIncorrectTeeth.incorrectTeeth.length !==0">
+          <div v-if="getIncorrectTeeth.incorrectRequiredTeeth.length !==0">
             <prime-message severity="warn">У данных пациентов в талоне для текущего диагноза <b>отсутсвует код зуба, требуемый для диагноза</b></prime-message>
             <stomatology-incorrect-teeth-table :records="getIncorrectTeeth.incorrectRequiredTeeth"></stomatology-incorrect-teeth-table>
           </div>
         </prime-tab-panel>
         <prime-tab-panel value="2">
-          <div v-if="getIncorrectTeeth.incorrectTeeth.length !==0">
+          <div v-if="getIncorrectTeeth.simultaneousTeethInclusion.length !==0">
             <prime-message severity="warn">У данных пациентов <b>два взаимоисключающих диагноза на 1 зуб</b></prime-message>
             <stomatology-incorrect-teeth-table :records="getIncorrectTeeth.simultaneousTeethInclusion"></stomatology-incorrect-teeth-table>
           </div>
@@ -40,7 +40,7 @@ export default {
   components: {StomatologyIncorrectTeethTable},
   computed: {
     ...mapGetters({
-      getIncorrectTeeth: 'app/getIncorrectTeeth'
+      getIncorrectTeeth: 'appStomModule/getIncorrectTeeth'
     })
   }
 }
