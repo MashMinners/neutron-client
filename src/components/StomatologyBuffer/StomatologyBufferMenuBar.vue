@@ -127,6 +127,7 @@ export default {
     ...mapActions({
       getIntersectionsAction: "appStomModule/getIntersectionsAction",
       getExcelPurposesAction: "appStomModule/getExcelIncorrectPurposesAction",
+      getXMLPurposesAction: "appStomModule/getXMLIncorrectPurposesAction",
       getTornCasesAction: "appStomModule/getTornCasesAction",
       getIncorrectServicesAction: "appStomModule/getIncorrectServicesAction",
       getIncorrectTeethAction: "appStomModule/getIncorrectTeethAction",
@@ -145,16 +146,14 @@ export default {
     }),
     StartAnalyze(){
       this.analyzeIntersections()
-      this.getExcelPurposesAction()
+      //this.getExcelPurposesAction()
+      this.getXMLPurposesAction()
       this.getTornCasesAction()
       this.getIncorrectServicesAction()
       this.getIncorrectTeethAction()
     },
     analyzeIntersections(){
       this.getIntersectionsAction()
-      //if(result.bad.length !==0) {
-        //this.$toast.add({ severity: 'success', summary: 'Загрузка завершена', detail: 'Загружены пересечения', life: 3000 });
-      //}
     },
     show() {
       this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });

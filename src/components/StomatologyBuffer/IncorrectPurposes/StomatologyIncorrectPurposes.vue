@@ -14,7 +14,10 @@
           <stomatology-excel-incorrect-purposes-table :records = excelIncorrectPurposes></stomatology-excel-incorrect-purposes-table>
         </prime-tab-panel>
         <prime-tab-panel value="1">
-         123
+          <div v-if="xmlIncorrectPurposes.length !==0">
+            <prime-message severity="error">По данным записям есть ошибки. Цель не соответсвует количеству посещений</prime-message>
+          </div>
+          <stomatology-xml-incorrect-purposes-table :records="xmlIncorrectPurposes"></stomatology-xml-incorrect-purposes-table>
         </prime-tab-panel>
       </prime-tab-panels>
     </prime-tabs>
@@ -26,13 +29,16 @@
 import {mapGetters} from "vuex";
 import StomatologyExcelIncorrectPurposesTable
   from "@/components/StomatologyBuffer/IncorrectPurposes/StomatologyExcelIncorrectPurposesTable";
+import StomatologyXmlIncorrectPurposesTable
+  from "@/components/StomatologyBuffer/IncorrectPurposes/StomatologyXmlIncorrectPurposesTable";
 
 export default {
   name: "StomatologyIncorrectPurposes",
-  components: {StomatologyExcelIncorrectPurposesTable},
+  components: {StomatologyXmlIncorrectPurposesTable, StomatologyExcelIncorrectPurposesTable},
   computed: {
     ...mapGetters({
-      excelIncorrectPurposes:'appStomModule/getExcelIncorrectPurposes'
+      excelIncorrectPurposes:'appStomModule/getExcelIncorrectPurposes',
+      xmlIncorrectPurposes:'appStomModule/getXMLIncorrectPurposes'
     })
   }
 }

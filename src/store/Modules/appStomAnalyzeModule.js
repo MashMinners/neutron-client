@@ -8,7 +8,8 @@ export const appStomAnalyzeModule = {
             good: [],
             dubious : []
         },
-        incorrectPurposes: [],
+        incorrectExcelPurposes: [],
+        incorrectXMLPurposes: [],
         tornCases: [],
         incorrectServices: {
             HaveNoPrimary: [],
@@ -49,7 +50,10 @@ export const appStomAnalyzeModule = {
             return state.intersections;
         },
         getExcelIncorrectPurposes(state){
-            return state.incorrectPurposes;
+            return state.incorrectExcelPurposes;
+        },
+        getXMLIncorrectPurposes(state){
+            return state.incorrectXMLPurposes;
         },
         getTornCases(state){
             return state.tornCases;
@@ -74,8 +78,11 @@ export const appStomAnalyzeModule = {
             state.intersections.good = intersections.good ?? []
             state.intersections.dubious = intersections.dubious ??[]
         },
-        ['GET_INCORRECT_PURPOSES'](state, purposes){
-            state.incorrectPurposes = purposes
+        ['SET_INCORRECT_EXCEL_PURPOSES'](state, purposes){
+            state.incorrectExcelPurposes = purposes
+        },
+        ['SET_INCORRECT_XML_PURPOSES'](state, purposes){
+            state.incorrectXMLPurposes = purposes
         },
         ['GET_TORN_CASES'](state, tornCases){
             state.tornCases = tornCases
@@ -121,8 +128,13 @@ export const appStomAnalyzeModule = {
         },
         // eslint-disable-next-line no-unused-vars
         async getExcelIncorrectPurposesAction({state, commit}) {
-            const response = await axios.get('http://172.25.70.201/buffer/stom/purposes?XDEBUG_SESSION_START=PHPSTORM');
-            commit('GET_INCORRECT_PURPOSES', response.data);
+            const response = await axios.get('http://172.25.70.201/buffer/stom/excel/purposes?XDEBUG_SESSION_START=PHPSTORM');
+            commit('SET_INCORRECT_EXCEL_PURPOSES', response.data);
+        },
+        // eslint-disable-next-line no-unused-vars
+        async getXMLIncorrectPurposesAction({state, commit}) {
+            const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-purposes?XDEBUG_SESSION_START=PHPSTORM');
+            commit('SET_INCORRECT_XML_PURPOSES', response.data);
         },
         // eslint-disable-next-line no-unused-vars
         async getTornCasesAction({state, commit}) {
