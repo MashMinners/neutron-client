@@ -15,9 +15,21 @@ export const appStomAnalyzeModule = {
             TwoOrMore: []
         },
         incorrectTeeth: {
-            incorrectTeeth: [],
-            incorrectRequiredTeeth: [],
-            simultaneousTeethInclusion: []
+            incorrectTeeth: {
+                Code: '',
+                Message: '',
+                Body: []
+            },
+            incorrectRequiredTeeth: {
+                Code: '',
+                Message: '',
+                Body: []
+            },
+            simultaneousTeethInclusion: {
+                Code: '',
+                Message: '',
+                Body: []
+            },
         },
         page: {
             title: 'Стоматология',
@@ -75,7 +87,6 @@ export const appStomAnalyzeModule = {
             state.incorrectTeeth.incorrectTeeth = teeth.incorrectTeeth
             state.incorrectTeeth.incorrectRequiredTeeth = teeth.incorrectRequiredTeeth
             state.incorrectTeeth.simultaneousTeethInclusion = teeth.simultaneousTeethInclusion
-            console.log(teeth)
         },
         // eslint-disable-next-line no-unused-vars
         ['UPLOAD_EXCEL_REGISTRY'](state, response){
