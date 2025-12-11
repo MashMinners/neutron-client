@@ -78,9 +78,9 @@ export const appModule = {
         //getIncorrectServices(state){
             //return state.incorrectServices
         //},
-        //getDispIntersections(state){
-            //return state.dispIntersections;
-        //},
+        getDispIntersections(state){
+            return state.dispIntersections;
+        },
         //getIncorrectTeeth(state){
             //return state.incorrectTeeth;
         //},

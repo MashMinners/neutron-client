@@ -2,7 +2,7 @@
   <div class="card">
     <prime-fieldset>
       <template #legend>
-        {{ pageMessage }}
+        <prime-message severity="contrast">{{ pageMessage }}</prime-message>
       </template>
       <div>
         <!--<Toolbar>

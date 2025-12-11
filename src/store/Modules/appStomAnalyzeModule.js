@@ -128,7 +128,7 @@ export const appStomAnalyzeModule = {
         },
         // eslint-disable-next-line no-unused-vars
         async getExcelIncorrectPurposesAction({state, commit}) {
-            const response = await axios.get('http://172.25.70.201/buffer/stom/excel/purposes?XDEBUG_SESSION_START=PHPSTORM');
+            const response = await axios.get('http://172.25.70.201/buffer/stom/excel/incorrect-purposes?XDEBUG_SESSION_START=PHPSTORM');
             commit('SET_INCORRECT_EXCEL_PURPOSES', response.data);
         },
         // eslint-disable-next-line no-unused-vars

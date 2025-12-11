@@ -146,7 +146,7 @@ export default {
     }),
     StartAnalyze(){
       this.analyzeIntersections()
-      //this.getExcelPurposesAction()
+      this.getExcelPurposesAction()
       this.getXMLPurposesAction()
       this.getTornCasesAction()
       this.getIncorrectServicesAction()
