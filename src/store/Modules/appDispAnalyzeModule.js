@@ -47,28 +47,28 @@ export const appDispAnalyzeModule = {
     actions:{
         //РАБОТА С ИСТОРИЯМИ БОЛЕЗНИ
         // eslint-disable-next-line no-unused-vars
-        async uploadIB({state, commit}) {
+        async uploadIBAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/histories/upload');
             console.log(response)
         },
         // eslint-disable-next-line no-unused-vars
-        async truncateIB({state, commit}) {
+        async truncateIBAction({state, commit}) {
             const response = await axios.delete('http://172.25.70.201/histories/truncate');
             console.log(response)
         },
         //РАБОТА С РЕЕСТРОМ ДИСПАНСЕРИЗАЦИИ
         // eslint-disable-next-line no-unused-vars
-        async uploadBufferDISPRegistry({state, commit}) {
+        async uploadExcelRegistryAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/disp/upload');
             commit('UPLOAD_BUFFER_DISP_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
-        async truncateBufferDISPRegistry({state, commit}) {
+        async truncateExcelRegistryAction({state, commit}) {
             const response = await axios.delete('http://172.25.70.201/buffer/disp/truncate');
             commit('TRUNCATE_BUFFER_DISP_REGISTRY', response.data)
         },
         // eslint-disable-next-line no-unused-vars
-        async getDispIntersections({state, commit}) {
+        async getIntersectionsAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/disp/intersections');
             commit('GET_DISP_INTERSECTIONS', response.data);
         },

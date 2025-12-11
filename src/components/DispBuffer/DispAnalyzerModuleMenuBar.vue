@@ -42,13 +42,13 @@ export default {
                 {
                   label: 'Истории болезни',
                   command: () => {
-                    this.uploadIB();
+                    this.uploadIBAction();
                   },
                 },
                 {
                   label: 'Загрузить реестр',
                   command: () => {
-                    this.uploadExcel();
+                    this.uploadExcelAction();
                   }
                 }
               ]
@@ -60,13 +60,13 @@ export default {
                 {
                   label: 'Истории болезни',
                   command: () => {
-                    this.truncateIB();
+                    this.truncateIBAction();
                   }
                 },
                 {
                   label: 'Очистить реестр',
                   command: () => {
-                    this.truncateExcel();
+                    this.truncateExcelAction();
                   },
                 }
               ]
@@ -86,11 +86,11 @@ export default {
   },
   methods:{
     ...mapActions({
-      uploadIB: "appDispModule/uploadIB",
-      truncateIB: "appDispModule/truncateIB",
-      uploadExcel: "appDispModule/uploadBufferDISPRegistry",
-      truncateExcel: "appDispModule/truncateBufferDISPRegistry",
-      getIntersectionsAction: "appDispModule/getDispIntersections",
+      uploadIBAction: "appDispModule/uploadIBAction",
+      truncateIBAction: "appDispModule/truncateIBAction",
+      uploadExcelAction: "appDispModule/uploadExcelRegistryAction",
+      truncateExcelAction: "appDispModule/truncateExcelRegistryAction",
+      getIntersectionsAction: "appDispModule/getIntersectionsAction",
     }),
     ...mapMutations({
       setActiveComponent: "appDispModule/SET_ACTIVE_COMPONENT",
