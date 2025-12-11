@@ -18,17 +18,17 @@ export const appStomAnalyzeModule = {
         incorrectTeeth: {
             incorrectTeeth: {
                 Code: '',
-                Message: '',
+                Message: 'Данные не загружены',
                 Body: []
             },
             incorrectRequiredTeeth: {
                 Code: '',
-                Message: '',
+                Message: 'Данные не загружены',
                 Body: []
             },
             simultaneousTeethInclusion: {
                 Code: '',
-                Message: '',
+                Message: 'Данные не загружены',
                 Body: []
             },
         },
