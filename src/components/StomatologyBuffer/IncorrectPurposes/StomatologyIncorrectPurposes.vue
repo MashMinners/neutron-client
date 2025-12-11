@@ -2,8 +2,8 @@
   <div>
     <prime-tabs value="0" scrollable>
       <prime-tab-list>
-        <prime-tab value="0">Некорректные цели (Excel)</prime-tab>
-        <prime-tab value="1">Некорректные цели (XML)</prime-tab>
+        <prime-tab value="0" @click="this.setTitle('Некорректные цели (Excel)')">Некорректные цели (Excel)</prime-tab>
+        <prime-tab value="1" @click="this.setTitle('Некорректные цели (XML)')">Некорректные цели (XML)</prime-tab>
       </prime-tab-list>
       <prime-tab-panels>
         <prime-tab-panel value="0">
@@ -26,7 +26,7 @@
 
 <script>
 
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import StomatologyExcelIncorrectPurposesTable
   from "@/components/StomatologyBuffer/IncorrectPurposes/StomatologyExcelIncorrectPurposesTable";
 import StomatologyXmlIncorrectPurposesTable
@@ -39,6 +39,11 @@ export default {
     ...mapGetters({
       excelIncorrectPurposes:'appStomModule/getExcelIncorrectPurposes',
       xmlIncorrectPurposes:'appStomModule/getXMLIncorrectPurposes'
+    })
+  },
+  methods: {
+    ...mapMutations({
+      setTitle: "appStomModule/SET_PAGE_TITLE"
     })
   }
 }

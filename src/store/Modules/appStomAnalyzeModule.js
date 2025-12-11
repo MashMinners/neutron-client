@@ -33,8 +33,8 @@ export const appStomAnalyzeModule = {
             },
         },
         page: {
-            title: 'Стоматология',
-            message: 'Работа с реестром по стоматологии'
+            title: 'Работа с реестром по стоматологии',
+            message: ''
         },
         mySQLRecords: {
             inserted: 0,
@@ -115,6 +115,9 @@ export const appStomAnalyzeModule = {
         },
         ['SET_SECTION_TITLE'](state, title){
             state.section.title = title
+        },
+        ['SET_PAGE_TITLE'](state, title){
+            state.page.title = title;
         },
         ['SET_ACTIVE_COMPONENT'](state, component){
             state.activeComponent = component

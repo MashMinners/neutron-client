@@ -32,6 +32,9 @@ export default {
       menuBarItems: [
         { label: 'Excel',
           icon: 'pi pi-file-excel',
+          command: () => {
+            this.setTitle('Работа с реестрами по стоматологии. Excel')
+          },
           items: [
             {
               label: 'Загрузить',
@@ -73,6 +76,9 @@ export default {
         },
         { label: 'XML',
           icon: 'pi pi-code',
+          command: () => {
+            this.setTitle('Работа с реестрами по стоматологии. XML')
+          },
           items:[
             {
               label: 'Загрузить данные XML',
@@ -93,31 +99,35 @@ export default {
           badge: 3,
           command: ()=> {
             this.setActiveComponent('StomatologyIntersections');
-            //this.getIntersections();
+            this.setTitle('Пересечения (30 дней)')
           }
         },
         {
           label: 'Некорректные цели',
           command: ()=> {
             this.setActiveComponent('StomatologyIncorrectPurposes');
+            this.setTitle('Некорректные цели')
           }
         },
         {
           label: 'Некорректные услуги',
           command: ()=> {
             this.setActiveComponent('StomatologyIncorrectServices');
+            this.setTitle('Некорректные услуги')
           }
         },
         {
           label: 'Разорванные случаи',
           command: ()=> {
             this.setActiveComponent('StomatologyTornCases');
+            this.setTitle('Разорванные случаи')
           }
         },
         {
           label: 'Ошибки по зубам',
           command: ()=> {
             this.setActiveComponent('StomatologyIncorrectTeeth');
+            this.setTitle('Ошибки по зубам')
           }
         }
       ]
@@ -142,7 +152,8 @@ export default {
       truncateVisits: "appStomModule/truncateVisitsAction",
     }),
     ...mapMutations({
-      setActiveComponent: "appStomModule/SET_ACTIVE_COMPONENT"
+      setActiveComponent: "appStomModule/SET_ACTIVE_COMPONENT",
+      setTitle: "appStomModule/SET_PAGE_TITLE"
     }),
     StartAnalyze(){
       this.analyzeIntersections()
