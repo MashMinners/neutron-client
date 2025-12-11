@@ -39,8 +39,8 @@ export default {
   computed: {
     ...mapGetters({
       //STEPS
-      pageTitle: 'app/getPageTitle',
-      pageMessage: 'app/getPageMessage'
+      pageTitle: 'appDispModule/getPageTitle',
+      pageMessage: 'appDispModule/getPageMessage'
     })
   },
   // eslint-disable-next-line vue/no-unused-components
@@ -85,13 +85,13 @@ export default {
     ...mapMutations({
     }),
     ...mapActions({
-      getIntersections: "app/getDispIntersections",
+      getIntersections: "appDispModule/getDispIntersections",
       //Буфер
-      uploadBuffer: "app/uploadBufferDISPRegistry",
-      truncateBuffer: "app/truncateBufferDISPRegistry",
+      uploadBuffer: "appDispModule/uploadBufferDISPRegistry",
+      truncateBuffer: "appDispModule/truncateBufferDISPRegistry",
       //Истории болезни
-      uploadIB: "app/uploadIB",
-      truncateIB: "app/truncateIB",
+      uploadIB: "appDispModule/uploadIB",
+      truncateIB: "appDispModule/truncateIB",
     }),
     showIntersections(){
       this.getIntersections()
