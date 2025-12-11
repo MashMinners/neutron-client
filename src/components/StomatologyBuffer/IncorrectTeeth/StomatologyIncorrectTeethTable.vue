@@ -34,7 +34,8 @@ export default {
       type: Array,
       default: () => [] // It's best practice to use a factory function for objects/arrays in default values
     }
-  }, methods: {
+  },
+  methods: {
     getPacientFullName(data){
       return data.stom_xml_lm_fam + ' ' + data.stom_xml_lm_im + ' ' + data.stom_xml_lm_ot
     }

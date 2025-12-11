@@ -66,7 +66,7 @@ export default {
                 {
                   label: 'Очистить реестр',
                   command: () => {
-                    this.truncateExcelAction();
+                    this.clearRegistryTable();
                   },
                 }
               ]
@@ -98,6 +98,10 @@ export default {
     }),
     StartAnalyze(){
       this.getIntersectionsAction()
+    },
+    clearRegistryTable(){
+      this.truncateExcelAction();
+      this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });
     }
   }
 }

@@ -9,13 +9,13 @@
                       paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
                       :rowsPerPageOptions="[10,20,50]"
                       currentPageReportTemplate="Показано {first} - {last} из {totalRecords}">
-      <prime-column field="visits_patient" header="Пациент"></prime-column>
-      <prime-column field="visits_patient_insurance_policy" header="Полис"></prime-column>
-      <prime-column field="visit_date" header="Дата последнего посещения" :sortable="true"></prime-column>
-      <prime-column field="buffer_stom_register_treatment_start" header="Дата начала лечения (РЕЕСТР)"></prime-column>
-      <prime-column field="buffer_stom_register_treatment_end" header="Дата окончания лечения (РЕЕСТР)"></prime-column>
-      <prime-column field="buffer_stom_register_doctor" header="Врач"></prime-column>
-      <prime-column field="buffer_stom_register_purpose" header="Цель посещения"></prime-column>
+      <prime-column field="buffer_disp_register_patient" header="Пациент"></prime-column>
+      <prime-column field="medical_history_insurance_policy" header="Полис"></prime-column>
+      <prime-column field="medical_history_date_out" header="Дата выписки" :sortable="true"></prime-column>
+      <prime-column field="buffer_disp_register_treatment_start" header="Дата начала лечения (РЕЕСТР)"></prime-column>
+      <prime-column field="buffer_disp_register_treatment_end" header="Дата окончания лечения (РЕЕСТР)"></prime-column>
+      <prime-column field="buffer_disp_register_doctor" header="Врач"></prime-column>
+      <prime-column field="buffer_disp_register_disp_sign" header="Цель посещения"></prime-column>
     </prime-data-table>
   </div>
   <div v-else>
