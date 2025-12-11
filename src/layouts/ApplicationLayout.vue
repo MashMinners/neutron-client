@@ -77,7 +77,7 @@ export default {
       setSectionTitle: "app/SET_SECTION_TITLE"
     }),
     goLink(title){
-      this.visible = false;
+      this.menuVisible = false;
       this.setSectionTitle(title);
     }
   },

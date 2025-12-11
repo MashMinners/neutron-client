@@ -36,7 +36,11 @@ export const appModule = {
             return state.menuItems;
         }
     },
-    mutations: {},
+    mutations: {
+        ['SET_SECTION_TITLE'](state, title){
+            state.section.title = title
+        }
+    },
     actions: {},
     namespaced: true
 }
