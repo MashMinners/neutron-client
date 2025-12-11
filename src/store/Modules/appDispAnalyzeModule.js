@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const appDispAnalyzeModule = {
     state:()=>({
+        activeComponent: null,
         dispIntersections: {
             bad : []
         },
@@ -12,6 +13,9 @@ export const appDispAnalyzeModule = {
         }
     }),
     getters: {
+        getActiveComponent(state){
+            return state.activeComponent
+        },
         getDispIntersections(state){
             return state.dispIntersections;
         },
@@ -23,6 +27,10 @@ export const appDispAnalyzeModule = {
         },
     },
     mutations:{
+        ['SET_ACTIVE_COMPONENT'](state, component){
+            state.activeComponent = component
+            console.log(component)
+        },
         ['UPLOAD_BUFFER_DISP_REGISTRY'](state, response){
             state.page.message = response;
         },
@@ -35,9 +43,6 @@ export const appDispAnalyzeModule = {
         ['SET_PAGE_TITLE'](state, title){
             state.page.title = title;
         },
-        ['SET_ACTIVE_COMPONENT'](state, component){
-            state.stomatologyBufferActiveComponent = component
-        }
     },
     actions:{
         //РАБОТА С ИСТОРИЯМИ БОЛЕЗНИ

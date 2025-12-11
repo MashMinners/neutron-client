@@ -7,7 +7,7 @@ const routes = [
     },
     {
         path: '/app/registry/stom',
-        name: 'start',
+        name: 'stom',
         meta: {
             layout: 'Application'
         },
@@ -22,21 +22,9 @@ const routes = [
             layout: 'Application'
         },
         component: function () {
-            return import('../views/DispPage.vue')
+            return import('../views/DispPageView.vue')
         }
     },
-
-
-    {
-        path: '/products',
-        name: 'products',
-        meta: {
-            layout: 'Application'
-        },
-        component: function () {
-            return import('../views/DispPage.vue')
-        }
-    }
 ]
 
 const router = createRouter({
