@@ -29,7 +29,7 @@ export default {
   name: "DispTabs",
   computed: {
     ...mapGetters({
-      getIntersections: 'app/getDispIntersections'
+      getIntersections: 'appDispModule/getDispIntersections'
     })
   },
   // eslint-disable-next-line vue/no-unused-components

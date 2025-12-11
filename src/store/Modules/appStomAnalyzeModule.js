@@ -42,7 +42,6 @@ export const appStomAnalyzeModule = {
         }
     }),
     getters: {
-
         getActiveComponent(state){
             return state.activeComponent
         },
@@ -113,9 +112,6 @@ export const appStomAnalyzeModule = {
         ['TRUNCATE_XML_REGISTRY'](state, response){
             state.page.message = response;
         },
-        ['SET_SECTION_TITLE'](state, title){
-            state.section.title = title
-        },
         ['SET_PAGE_TITLE'](state, title){
             state.page.title = title;
         },
@@ -124,6 +120,7 @@ export const appStomAnalyzeModule = {
         }
     },
     actions:{
+        //РАБОТА С РЕЕСТРОМ ПО СТОМАТОЛОГИИ
         // eslint-disable-next-line no-unused-vars
         async getIntersectionsAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
@@ -177,7 +174,7 @@ export const appStomAnalyzeModule = {
             commit('SET_INCORRECT_TEETH', response.data);
         },
 
-        //РАБОТА С ВИЗИТАМИ (Стоматология)
+        //РАБОТА С ВИЗИТАМИ
         // eslint-disable-next-line no-unused-vars
         async uploadVisitsAction({state, commit}) {
             // eslint-disable-next-line no-unused-vars
