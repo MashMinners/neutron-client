@@ -133,6 +133,11 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters({
+      getToastMessage: "appStomModule/getToastMessage"
+    })
+  },
   methods: {
     ...mapActions({
       getIntersectionsAction: "appStomModule/getIntersectionsAction",
@@ -156,31 +161,44 @@ export default {
       setTitle: "appStomModule/SET_PAGE_TITLE",
       message: "appStomModule/SET_TOAST_MESSAGE"
     }),
-    StartAnalyze(){
-      this.analyzeIntersections()
-      this.getExcelPurposesAction()
-      this.getXMLPurposesAction()
-      //this.getTornCasesAction()
-      this.getIncorrectServicesAction()
-      this.getIncorrectTeethAction()
+    async StartAnalyze(){
+      await this.analyzeIntersections();
+      await this.analyzeExcelPurposes();
+      await this.analyzeXmlPurposes();
+      await this.analyzeTornCases();
+      await this.analyzeIncorrectServices();
+      await this.analyzeIncorrectTeeth();
     },
-    analyzeIntersections(){
-      this.getIntersectionsAction()
+    async analyzeIntersections(){
+      await this.getIntersectionsAction();
+      this.toast();
     },
-    async show() {
-      await this.getTornCasesAction()
+    async analyzeExcelPurposes(){
+      await this.getExcelPurposesAction();
+      this.toast();
+    },
+    async analyzeXmlPurposes(){
+      await this.getXMLPurposesAction();
+      this.toast();
+    },
+    async analyzeTornCases(){
+      await this.getTornCasesAction();
+      this.toast();
+    },
+    async analyzeIncorrectServices(){
+      await this.getIncorrectServicesAction();
+      this.toast();
+    },
+    async analyzeIncorrectTeeth(){
+      await this.getIncorrectTeethAction();
+      this.toast()
+    },
+    toast(){
       this.$toast.add({ severity: this.getToastMessage.severity, summary: this.getToastMessage.summary, detail: this.getToastMessage.message, life: 5000 });
-      await this.getIncorrectServicesAction()
-      this.$toast.add({ severity: this.getToastMessage.severity, summary: this.getToastMessage.summary, detail: this.getToastMessage.message, life: 5000 });
+    },
+    show() {
+      this.$toast.add({ severity: "success", summary: "Тост", detail: "Сообщеник", life: 5000 });
     }
-  },
-  computed: {
-    ...mapGetters({
-      getToastMessage: "appStomModule/getToastMessage"
-    })
-  },
-  watch:{
-
   }
 }
 </script>

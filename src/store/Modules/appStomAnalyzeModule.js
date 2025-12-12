@@ -133,17 +133,33 @@ export const appStomAnalyzeModule = {
         // eslint-disable-next-line no-unused-vars
         async getIntersectionsAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/stom/intersections?XDEBUG_SESSION_START=PHPSTORM');
-            commit('SET_INTERSECTIONS', response.data);
+            if (response.data.length !==0){
+                commit('SET_INTERSECTIONS', response.data);
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с пересечениями загружены', summary: 'Пересечения', severity: 'success'})
+            }else {
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с пересечениями не найдены', summary: 'Пересечения', severity: 'warn'})
+            }
         },
         // eslint-disable-next-line no-unused-vars
         async getExcelIncorrectPurposesAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/stom/excel/incorrect-purposes?XDEBUG_SESSION_START=PHPSTORM');
-            commit('SET_INCORRECT_EXCEL_PURPOSES', response.data);
+            if (response.data.length !==0){
+                commit('SET_INCORRECT_EXCEL_PURPOSES', response.data);
+                commit('SET_TOAST_MESSAGE', {message: 'Данные по некорректным целям из Excel загружены', summary: 'Некорректные цели (Excel)', severity: 'success'})
+            }else {
+                commit('SET_TOAST_MESSAGE', {message: 'Данные по некорректным целям в Excel не найдены', summary: 'Некорректные цели (Excel)', severity: 'warn'})
+            }
         },
         // eslint-disable-next-line no-unused-vars
         async getXMLIncorrectPurposesAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-purposes?XDEBUG_SESSION_START=PHPSTORM');
-            commit('SET_INCORRECT_XML_PURPOSES', response.data);
+            if (response.data.length !==0){
+                commit('SET_INCORRECT_XML_PURPOSES', response.data);
+                commit('SET_TOAST_MESSAGE', {message: 'Данные по некорректным целям из XML загружены', summary: 'Некорректные цели (XML)', severity: 'success'})
+            }else {
+                commit('SET_TOAST_MESSAGE', {message: 'Данные по некорректным целям в XML не найдены', summary: 'Некорректные цели (XML)', severity: 'warn'})
+            }
+
         },
         // eslint-disable-next-line no-unused-vars
         async getTornCasesAction({state, commit}) {
@@ -183,15 +199,25 @@ export const appStomAnalyzeModule = {
                 commit('SET_INCORRECT_SERVICES', response.data);
                 commit('SET_TOAST_MESSAGE', {message: 'Данные с услугами загружены', summary: 'Некорректные услуги', severity: 'success'})
             }else {
-                commit('SET_TOAST_MESSAGE', {message: 'Данные с услугами не загружены', summary: 'Некорректные услуги', severity: 'error'})
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с услугами не загружены', summary: 'Некорректные услуги', severity: 'warn'})
             }
         },
         // eslint-disable-next-line no-unused-vars
         async getIncorrectTeethAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-teeth?XDEBUG_SESSION_START=PHPSTORM');
-            commit('SET_INCORRECT_TEETH', response.data);
-        },
+            if (response.data.incorrectRequiredTeeth.Body.length !==0 ||
+                response.data.incorrectTeeth.Body.length !==0 ||
+                response.data.simultaneousTeethInclusion.Body.length !==0)
+            {
+                commit('SET_INCORRECT_TEETH', response.data);
+                commit('SET_TOAST_MESSAGE', {message: 'Данные со случаями по зубам загружены', summary: 'Некорректные случаи по зубам', severity: 'success'})
+            }
+            else
+            {
+                commit('SET_TOAST_MESSAGE', {message: 'Данные со случаями по зубам не загружены', summary: 'Некорректные случаи по зубам', severity: 'warn'})
+            }
 
+        },
         //РАБОТА С ВИЗИТАМИ
         // eslint-disable-next-line no-unused-vars
         async uploadVisitsAction({state, commit}) {
