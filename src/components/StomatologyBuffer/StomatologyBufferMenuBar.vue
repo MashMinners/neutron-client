@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {mapActions, mapMutations} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 
 export default {
   name: "StomatologyBufferMenuBar",
@@ -153,22 +153,34 @@ export default {
     }),
     ...mapMutations({
       setActiveComponent: "appStomModule/SET_ACTIVE_COMPONENT",
-      setTitle: "appStomModule/SET_PAGE_TITLE"
+      setTitle: "appStomModule/SET_PAGE_TITLE",
+      message: "appStomModule/SET_TOAST_MESSAGE"
     }),
     StartAnalyze(){
       this.analyzeIntersections()
       this.getExcelPurposesAction()
       this.getXMLPurposesAction()
-      this.getTornCasesAction()
+      //this.getTornCasesAction()
       this.getIncorrectServicesAction()
       this.getIncorrectTeethAction()
     },
     analyzeIntersections(){
       this.getIntersectionsAction()
     },
-    show() {
-      this.$toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 });
+    async show() {
+      await this.getTornCasesAction()
+      this.$toast.add({ severity: this.getToastMessage.severity, summary: this.getToastMessage.summary, detail: this.getToastMessage.message, life: 5000 });
+      await this.getIncorrectServicesAction()
+      this.$toast.add({ severity: this.getToastMessage.severity, summary: this.getToastMessage.summary, detail: this.getToastMessage.message, life: 5000 });
     }
+  },
+  computed: {
+    ...mapGetters({
+      getToastMessage: "appStomModule/getToastMessage"
+    })
+  },
+  watch:{
+
   }
 }
 </script>

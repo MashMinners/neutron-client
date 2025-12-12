@@ -39,7 +39,8 @@ export const appStomAnalyzeModule = {
         mySQLRecords: {
             inserted: 0,
             deleted: 0
-        }
+        },
+        toastMessage: {}
     }),
     getters: {
         getActiveComponent(state){
@@ -69,6 +70,9 @@ export const appStomAnalyzeModule = {
         },
         getPageMessage(state){
             return state.page.message;
+        },
+        getToastMessage(state){
+            return state.toastMessage
         }
     },
     mutations:{
@@ -83,8 +87,13 @@ export const appStomAnalyzeModule = {
         ['SET_INCORRECT_XML_PURPOSES'](state, purposes){
             state.incorrectXMLPurposes = purposes
         },
-        ['GET_TORN_CASES'](state, tornCases){
+        ['SET_TORN_CASES'](state, tornCases){
             state.tornCases = tornCases
+        },
+        ['SET_TOAST_MESSAGE'](state, message){
+            state.toastMessage.message = message.message
+            state.toastMessage.summary = message.summary
+            state.toastMessage.severity = message.severity
         },
         ['SET_INCORRECT_SERVICES'](state, services){
             state.incorrectServices = services
@@ -139,7 +148,12 @@ export const appStomAnalyzeModule = {
         // eslint-disable-next-line no-unused-vars
         async getTornCasesAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/buffer/stom/torn-cases?XDEBUG_SESSION_START=PHPSTORM');
-            commit('GET_TORN_CASES', response.data);
+            if (response.data){
+                commit('SET_TORN_CASES', response.data);
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с разрывами загружены', summary: 'Разорванные случаи', severity: 'success'})
+            }else {
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с разрывами не загружены', summary: 'Разорванные случаи', severity: 'error'})
+            }
         },
         // eslint-disable-next-line no-unused-vars
         async uploadExcelRegistryAction({state, commit}) {
@@ -162,11 +176,15 @@ export const appStomAnalyzeModule = {
             const response = await axios.delete('http://172.25.70.201/xml/stom/truncate');
             commit('TRUNCATE_XML_REGISTRY', response.data)
         },
-
         // eslint-disable-next-line no-unused-vars
         async getIncorrectServicesAction({state, commit}) {
             const response = await axios.get('http://172.25.70.201/invoice/analyzer/incorrect-services?XDEBUG_SESSION_START=PHPSTORM');
-            commit('SET_INCORRECT_SERVICES', response.data);
+            if (response.data.HaveNoPrimary.length !==0 || response.data.TwoOrMore.length !==0){
+                commit('SET_INCORRECT_SERVICES', response.data);
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с услугами загружены', summary: 'Некорректные услуги', severity: 'success'})
+            }else {
+                commit('SET_TOAST_MESSAGE', {message: 'Данные с услугами не загружены', summary: 'Некорректные услуги', severity: 'error'})
+            }
         },
         // eslint-disable-next-line no-unused-vars
         async getIncorrectTeethAction({state, commit}) {
